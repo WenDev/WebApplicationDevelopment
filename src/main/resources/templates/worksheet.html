@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: import(~{:: title})">
+    <title>企客宝客户管理系统-工单一览</title>
+</head>
+<body class="app-worksheet">
+<div id="app">
+    <div class="page narrow">
+        <div th:replace="_fragments :: aside"></div>
+        <div class="page-main">
+            <div th:replace="_fragments :: navbar"></div>
+            <div class="page-main-container flex-container">
+                <div class="page-main-aside">
+                    <section class="page-aside-section">
+                        <h5 class="page-aside-title">工单一览</h5>
+                        <div class="list-group" id="worksheet-navi">
+                            <a class="list-group-item active" href="#" data-type="1">
+                                <span class="list-group-item-content">我提交的工单</span>
+                            </a>
+                            <a class="list-group-item" href="#" data-type="2">
+                                <span class="list-group-item-content">我受理中的工单</span>
+
+                            </a>
+                            <a class="list-group-item" href="#" data-type="3">
+                                <span class="list-group-item-content">我的已完结工单</span>
+                            </a>
+                            <a class="list-group-item" href="#" data-type="4">
+                                <span class="list-group-item-content">我回复过的工单</span>
+                            </a>
+                            <a class="list-group-item" href="#" data-type="5">
+                                <span class="list-group-item-content">已分配未受理的工单</span>
+
+                            </a>
+                            <a class="list-group-item" href="#" data-type="0">
+                                <span class="list-group-item-content">全部的工单</span>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="page-main-content">
+
+                    <div class="page-main-actions">
+                        <button type="button" data-toggle="modal" data-target="#worksheetModal"
+                                class="btn btn-success btn-sm pull-right">
+                            创建工单
+                        </button>
+                        <form class="form-inline" id="search-worksheet-form">
+                            <div class="form-group">
+                                <label class="control-label padding-right-10" for="search-name">标题</label>
+                                <input type="text" class="form-control" v-model="worksheetSearchTitle"
+                                       name="search-name" id="search-name">
+                            </div>
+                            <div class="form-group padding-left-10">
+                                <label class="control-label padding-right-10" for="search-createDate">创建时间</label>
+                                <div class="input-group input-daterange" id="search-createDate">
+                                    <input type="text" class="form-control" value="" name="search-startCreateDate"
+                                           id="search-startCreateDate" v-model="worksheetSearchStartTime">
+                                    <div class="input-group-addon">到</div>
+                                    <input type="text" class="form-control" value="" name="search-endCreateDate"
+                                           id="search-endCreateDate" v-model="worksheetSearchEndTime">
+                                </div>
+                            </div>
+
+                            <div class="form-group padding-left-10">
+                                <button type="button" class="btn btn-success btn-sm" id="search-btn"
+                                        @click="searchWorksheet">
+                                    搜索
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="table-responsive page-content-table padding-top-20" id="entity-item-list">
+                        <table class="table table-pointer table-striped nowrap">
+                            <thead>
+                            <tr>
+                                <th class="cell-80">编号</th>
+                                <th>标题</th>
+                                <th class="cell-80">状态</th>
+                                <th class="cell-100">发起人</th>
+                                <th class="cell-120">创建时间</th>
+                                <th class="cell-120">受理时间</th>
+                                <th class="cell-120">操作</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="worksheet-body">
+                            <tr id="worksheet-item-clone" :class="worksheets === [] ? 'hide' : ''"
+                                v-for="(item, index) in worksheets.content">
+                                <td class="idx">{{ item.id }}</td>
+                                <td class="item-name">
+                                    <a href="#">{{ item.title }}</a>
+                                </td>
+                                <td>
+                                    <span class="label item-status">成交</span>
+                                </td>
+                                <td class="item-createUser">{{ item.createdBy }}</td>
+                                <td class="item-createDate">{{ item.createdTime }}</td>
+                                <td class="item-processDate"></td>
+                                <td>
+                                    <button type="button" class="btn btn-xs btn-danger btn-delete"
+                                            @click="doDeleteWorksheet(item.id)">
+                                        删除工单
+                                    </button>
+                                </td>
+                                <td class="suf-cell"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="pagination">
+                        <div class="page-bottom" id="item-pageNavi">
+                            <span>第{{ worksheets.page }}页，共{{ worksheets.totalPages }}页，共{{ worksheets.total }}条记录</span>
+                            <a v-if="worksheets.page !== 1" @click="previousPage">上一页</a>
+                            <a v-if="worksheets.page !== worksheets.totalPages" @click="nextPage">下一页</a>
+                        </div>
+                    </div>
+
+                    <div class="loading" id="search-loading" style="display: none;">
+                        <div class="liner">
+                            <h3>加载中...</h3>
+                            <img alt="加载中" src="/images/dots-white.gif">
+                        </div>
+                    </div>
+
+                    <div id="worksheet-blank" class="loading" style="display: block;" v-if="worksheets === []">
+                        <div class="liner">
+                            <h3>{{ message }}</h3>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="worksheetModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">创建工单</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                    <form class="form-horizontal" id="form-add-worksheet">
+                        <input type="hidden" name="worksheet-attachmentFiles" id="worksheet-attachmentFiles" value="">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label required" for="worksheet-title">工单标题</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="worksheet-title" name="worksheet-title"
+                                       data-field-required="true" v-model="title">
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label required" for="worksheet-templateId">工单模板</label>
+                            <div class="col-sm-9">
+                                <select class="form-control select2-hidden-accessible" name="worksheet-templateId"
+                                        id="worksheet-templateId" data-plugin="select2" data-language="zh-CN"
+                                        data-width="100%" data-field-required="true" tabindex="-1" aria-hidden="true"
+                                        @change="selectTemplate($event)">
+                                    <option v-for="(item, index) in worksheetTemplates" :key="index" :value="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select>
+                                <span class="select2 select2-container select2-container--default" dir="ltr"
+                                      style="width: 100%;">
+                                    <span class="selection">
+                                        <span
+                                                class="select2-selection select2-selection--single" role="combobox"
+                                                aria-haspopup="true"
+                                                aria-expanded="false" tabindex="0"
+                                                aria-labelledby="select2-worksheet-customerId-container">
+                                            <span
+                                                    class="select2-selection__rendered"
+                                                    id="select2-worksheet-customerId-container"><span
+                                                    class="select2-selection__placeholder">工单模板</span>
+                                            </span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                            <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="worksheet-customerId">关联客户</label>
+                            <div class="col-sm-9">
+                                <select class="form-control select2-hidden-accessible" name="worksheet-customerId"
+                                        id="worksheet-customerId" data-language="zh-CN" data-width="100%" tabindex="-1"
+                                        aria-hidden="true" @change="selectCustomer($event)">
+                                    <option v-for="(item, index) in customers" :key="index" :value="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select>
+                                <span class="select2 select2-container select2-container--default" dir="ltr"
+                                      style="width: 100%;">
+                                    <span class="selection">
+                                        <span
+                                                class="select2-selection select2-selection--single" role="combobox"
+                                                aria-haspopup="true"
+                                                aria-expanded="false" tabindex="0"
+                                                aria-labelledby="select2-worksheet-customerId-container">
+                                            <span
+                                                    class="select2-selection__rendered"
+                                                    id="select2-worksheet-customerId-container"><span
+                                                    class="select2-selection__placeholder">请输入客户名检索</span>
+                                            </span>
+                                            <span class="select2-selection__arrow" role="presentation">
+                                            <b role="presentation"></b>
+                                            </span>
+                                        </span>
+                                    </span>
+                                    <span class="dropdown-wrapper" aria-hidden="true"></span>
+                                </span>
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="worksheet-priority">重要度</label>
+                            <div class="col-sm-9">
+                                <select class="form-control select2-hidden-accessible" name="worksheet-priority"
+                                        id="worksheet-priority" data-plugin="select2" data-language="zh-CN"
+                                        data-width="100%" tabindex="-1" aria-hidden="true"
+                                        @change="selectImportance($event)">
+                                    <option v-for="(item, index) in importance" :key="index" :value="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr"
+                                               style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true"
+                                    aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-worksheet-priority-container"><span
+                                    class="select2-selection__rendered" id="select2-worksheet-priority-container"
+                                    title="-">-</span><span
+                                    class="select2-selection__arrow" role="presentation"><b
+                                    role="presentation"></b></span></span></span><span
+                                    class="dropdown-wrapper" aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+
+                        <div id="worksheet-template-field"></div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">附件</label>
+                            <div class="col-sm-9">
+                                <div>
+                <span id="worksheet-upload-btn-container" style="position: relative;">
+                  <input type="file" id="worksheet-upload-btn" class="btn btn-pure icon iconfont icon-attachment"
+                         style="z-index: 1;" @change="doUpload()"/>
+                <div id="html5_1cn32ls4n16531een1k7o1mrfob24_container" class="moxie-shim moxie-shim-html5"
+                     style="position: absolute; top: 0px; left: 0px; width: 0px; height: 0px; overflow: hidden; z-index: 0;"><input
+                        id="html5_1cn32ls4n16531een1k7o1mrfob24" type="file"
+                        style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;"
+                        multiple="" accept="" tabindex="-1"></div></span>
+                                </div>
+                                <div id="worksheet-files" class="upload-attachments">
+                                    <div class="upload-attachment-item" v-if="annex !== ''"
+                                         id="upload-worksheet-attachment-item-clone">
+                                        <i class="icon iconfont"></i>
+                                        <span class="file-name padding-right-5">{{ originalFileName }}</span>
+                                        <br/>
+                                        (<span class="file-size"><a :href="annex">{{ annex }}</a></span>)
+                                        <span class="file-progress padding-left-10"></span>
+                                        <a href="#" class="file-remove-link" @click="removeAnnex">删除</a>
+                                    </div>
+                                </div>
+                                <div id="worksheet-files"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="add-worksheet-btn" type="button" @click="doAddWorksheet">确定
+                    </button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="updateNoteModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">修改跟进记录</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="update-note-btn" type="button">确定</button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="transferModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false"
+         tabindex="-1">
+        <div class="modal-dialog modal-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">指定工单受理人</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                    <form id="form-transfer-worksheet">
+                        <div class="form-group">
+                            <label class="control-label" for="worksheet-newProcessUserId">新的受理人</label>
+                            <select class="form-control select2-hidden-accessible" name="worksheet-newProcessUserId"
+                                    id="worksheet-newProcessUserId" data-plugin="select2" data-language="zh-CN"
+                                    data-width="100%" tabindex="-1" aria-hidden="true">
+                                <option value="QVtaSg==">孙伟</option>
+                            </select><span class="select2 select2-container select2-container--default" dir="ltr"
+                                           style="width: 100%;"><span class="selection"><span
+                                class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                                aria-expanded="false" tabindex="0"
+                                aria-labelledby="select2-worksheet-newProcessUserId-container"><span
+                                class="select2-selection__rendered" id="select2-worksheet-newProcessUserId-container"
+                                title="孙伟">孙伟</span><span class="select2-selection__arrow" role="presentation"><b
+                                role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                                                                   aria-hidden="true"></span></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="worksheet-transfer-btn" type="button">确定</button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="changeCustomerModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">修改所属客户</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                    <form id="form-change-customer">
+                        <div class="form-group">
+                            <label class="control-label" for="entity-change-customerId">所属客户</label>
+                            <select class="form-control select2-hidden-accessible" name="entity-change-customerId"
+                                    id="entity-change-customerId" data-language="zh-CN" data-width="100%"
+                                    data-field-required="false" tabindex="-1" aria-hidden="true">
+                            </select><span class="select2 select2-container select2-container--default" dir="ltr"
+                                           style="width: 100%;"><span class="selection"><span
+                                class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
+                                aria-expanded="false" tabindex="0"
+                                aria-labelledby="select2-entity-change-customerId-container"><span
+                                class="select2-selection__rendered"
+                                id="select2-entity-change-customerId-container"><span
+                                class="select2-selection__placeholder">请输入客户名检索</span></span><span
+                                class="select2-selection__arrow" role="presentation"><b
+                                role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                                                                   aria-hidden="true"></span></span>
+                            <small class="help-block"></small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="change-customer-btn" type="button" data-name="worksheet">确定
+                    </button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data () {
+      return {
+        // 当前是第几页
+        page: 1,
+        // 每页几条数据
+        size: 10,
+        // 搜索标题
+        searchName: '',
+        // 搜索的起始时间
+        searchStartCreateDate: '',
+        // 搜索的终止时间
+        searchEndCreateDate: '',
+        // 工单数据
+        worksheets: [],
+        // 选项，如'我提交的工单'等
+        option: 0,
+        message: '没有找到相关工单信息',
+        // 重要度
+        importance: [],
+        // 工单模板
+        worksheetTemplates: [],
+        // 客户列表
+        customers: [],
+        // 选中的重要度
+        selectedImportance: 1,
+        // 选中的工单模板
+        selectedTemplate: 1,
+        // 选中的客户
+        selectedCustomer: 1,
+        // 工单标题
+        title: '',
+        // 附件地址
+        annex: '',
+        // 文件原名
+        originalFileName: '',
+        // 要搜索的工单标题
+        worksheetSearchTitle: '',
+        // 要搜索的工单创建开始时间
+        worksheetSearchStartTime: '',
+        // 要搜索的工单创建结束时间
+        worksheetSearchEndTime: ''
+      }
+    },
+    mounted () {
+      // 加载重要度列表
+      axios
+        .get('/importance/list')
+        .then((response) => {
+          if (response.data.code === 0) {
+            this.importance = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+      // 加载工单模板列表
+      axios
+        .get('/template/list')
+        .then((response) => {
+          if (response.data.code === 0) {
+            this.worksheetTemplates = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+      // 加载客户列表
+      axios
+        .get('/customer/list')
+        .then((response) => {
+          if (response.data.code === 0) {
+            this.customers = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+      // 加载工单列表
+      axios
+        .get('/worksheet/list', {
+          params: {
+            page: this.page,
+            size: this.size
+          }
+        })
+        .then((response) => {
+          if (response.data.code === 0) {
+            this.worksheets = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    methods: {
+      loadWorksheets () {
+        // 加载工单列表
+        axios
+          .get('/worksheet/list', {
+            params: {
+              page: this.page,
+              size: this.size
+            }
+          })
+          .then((response) => {
+            if (response.data.code === 0) {
+              this.worksheets = response.data.data
+            } else {
+              this.message = response.data.message
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+      },
+      selectImportance (event) {
+        this.selectedImportance = event.target.value
+      },
+      selectTemplate (event) {
+        this.selectedTemplate = event.target.value
+      },
+      selectCustomer (event) {
+        this.selectedCustomer = event.target.value
+      },
+      doUpload () {
+        // TODO 这里查不到Vue怎么获取这个文件，只好借用一下jQuery的方法了
+        let file = $('#worksheet-upload-btn')[0].files[0]
+        let formData = new FormData()
+        formData.append('file', file)
+        axios
+          .post('/file/upload', formData, { 'Content-Type': 'multipart/form-data' })
+          .then((response) => {
+            if (response.data.code === 0) {
+              this.annex = response.data.data.filePath
+              this.originalFileName = response.data.data.originalFileName
+            }
+          })
+      },
+      doAddWorksheet () {
+        // 开始新增工单
+        axios
+          .post('/worksheet/add', {
+            'title': this.title,
+            'customer': this.selectedCustomer,
+            'template': this.selectedTemplate,
+            'importance': this.selectedImportance,
+            'annex': this.annex
+          })
+          .then(response => {
+            if (response.data.code === 0) {
+              alert('添加工单成功')
+              location.reload()
+            } else {
+              alert(response.data.message)
+            }
+          })
+          .catch(error => console.log(error))
+      },
+      doDeleteWorksheet (id) {
+        axios
+          .delete('/worksheet/delete', {
+            params: {
+              'id': id
+            }
+          })
+          .then(response => {
+            if (response.data.code === 0) {
+              alert('删除工单成功')
+              location.reload()
+            } else {
+              alert(response.data.message)
+            }
+          })
+      },
+      removeAnnex () {
+        // 移除附件
+        this.annex = ''
+        this.originalFileName = ''
+        $('#worksheet-upload-btn')[0].files[0] = null
+      },
+      searchWorksheet () {
+        // 搜索工单
+        axios
+          .get('/worksheet/search', {
+            params: {
+              page: this.page,
+              size: this.size,
+              title: this.worksheetSearchTitle,
+              startTime: this.worksheetSearchStartTime,
+              endTime: this.worksheetSearchEndTime
+            }
+          })
+          .then(response => {
+            if (response.data.code === 0) {
+              this.worksheets = response.data.data
+            } else {
+              this.message = response.data.message
+            }
+          })
+          .catch(error => console.log(error))
+      },
+      previousPage () {
+        this.page--
+        this.loadWorksheets()
+      },
+      nextPage () {
+        this.page++
+        this.loadWorksheets()
+      }
+    }
+  })
+</script>
+</body>
+</html>

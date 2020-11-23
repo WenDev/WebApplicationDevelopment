@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="renderer" content="webkit"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+<head>
+<style type="text/css" id="alertifyCSS"></style>
+<title>企客宝客户管理系统-呼叫中心</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="renderer" content="webkit">
+<link rel="stylesheet" href="css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="css/vendor/alertify.min.css">
+<link rel="stylesheet" href="css/vendor/toastr.min.css">
+<link rel="stylesheet" href="css/vendor/bootstrap-treeview.min.css">
+<link rel="stylesheet" href="css/vendor/asScrollable.min.css">
+<link rel="stylesheet" href="css/vendor/asProgress.min.css">
+<link rel="stylesheet" href="css/iconfont.css">
+<link rel="stylesheet" href="css/bootstrap-extend.css">
+<link rel="stylesheet" href="css/main.css">
+<script type="text/javascript" src="script/vendor/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="script/vendor/jquery-migrate-3.0.0.min.js"></script>
+<script type="text/javascript" src="script/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="script/vendor/alertify.min.js"></script>
+<script type="text/javascript" src="script/vendor/toastr.min.js"></script>
+<script type="text/javascript" src="script/vendor/bootstrap-treeview.min.js"></script>
+<script type="text/javascript" src="script/vendor/jquery-asScrollbar.min.js"></script>
+<script type="text/javascript" src="script/vendor/jquery-asScrollable.min.js"></script>
+<script type="text/javascript" src="script/vendor/jquery-asProgress.min.js"></script>
+<script type="text/javascript" src="script/vendor/typeahead.bundle.min.js"></script>
+<script type="text/javascript" src="script/vendor/handlebars.min.js"></script>
+<script type="text/javascript" src="script/common.js"></script>
+<script type="text/javascript" src="script/entity.js"></script>
+<style type="text/css">
+.sindu_dragger {
+	list-style:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	box-sizing:border-box
+}
+.sindu_handle {
+	cursor:move
+}
+.sindu_dragger li {
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-align:inherit
+}
+.sindu_dragger li table, .sindu_dragger td, .sindu_dragger th, .sindu_dragger tr {
+	box-sizing:border-box
+}
+.gu-mirror {
+	list-style:none
+}
+.sindu_dragger.sindu_column li {
+	float:left
+}
+.sindu_dragging .sindu_origin_table {
+	visibility:hidden
+}
+.gu-mirror {
+	position:fixed!important;
+	margin:0!important;
+	z-index:9999!important;
+	opacity:.8
+}
+.gu-mirror li {
+	margin:0;
+	padding:0;
+	list-style:none;
+	text-align:inherit
+}
+.gu-mirror li table, .gu-mirror td, .gu-mirror th, .gu-mirror tr {
+	box-sizing:border-box
+}
+.gu-hide {
+	display:none!important
+}
+.gu-unselectable {
+	-webkit-user-select:none!important;
+	-moz-user-select:none!important;
+	-ms-user-select:none!important;
+	user-select:none!important
+}
+.gu-transit{opacity:.5}
+</style>
+</head>
+<body class="app-callCenter">
+<div class="page narrow">
+  <div class="aside">
+  <div class="aside-header">
+    <a href="#"><img class="brand-img" src="/images/logo-72.png"></a>
+  </div>
+  <div class="aside-navi-container">
+    <div id="aside-navi-wrap" class="aside-navi-wrap asScrollable is-enabled asScrollable-vertical">
+      <div class="asScrollable-container" style="height: 725px; width: 87px;">
+        <div class="asScrollable-content" style="width: 70px;">
+          <ul class="aside-navi">
+            <li>
+              <a id="aside-navi-workbench" href="workbench.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="工作台">
+              <i class="iconfont icon-workbench"></i> <span>工作台</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-customer" href="customer.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="客户">
+                <i class="iconfont icon-company"></i> <span>客户</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-publicCustomer" href="publicCustomer.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="公海">
+                <i class="iconfont icon-publicGroup"></i> <span>公海</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-contact" href="contact.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="联系人">
+                <i class="iconfont icon-contacts"></i> <span>联系人</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-weixin" href="weixin.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="微信">
+                <i class="iconfont icon-weixin"></i> <span>微信</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-deal" href="deal.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="销售机会">
+                <i class="iconfont icon-deal"></i> <span>销售机会</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-contract" href="contract.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="合同">
+                <i class="iconfont icon-contract"></i> <span>合同</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-payment" href="payment.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="款项">
+                <i class="iconfont icon-payment"></i> <span>款项</span></a>
+            </li>
+            
+            <li>
+              <a id="aside-navi-note" href="note.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="跟进记录">
+                <i class="iconfont icon-note2"></i> <span>跟进记录</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-worksheet" href="worksheet.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="工单">
+                <i class="iconfont icon-worksheet"></i> <span>工单</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-workReport" href="workReport.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="工作汇报">
+                <i class="iconfont icon-workReport"></i> <span>工作汇报</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-product" href="product.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="产品">
+                <i class="iconfont icon-product"></i> <span>产品</span></a>
+            </li>
+            <li>
+              <a class="selected" id="aside-navi-callCenter" href="records.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="呼叫中心/短信">
+                <i class="iconfont icon-tel-busy"></i> <span>呼叫中心</span></a>
+            </li>
+            <li>
+              <a id="aside-navi-statistics" href="customer.html" data-tooltip="tooltip" data-placement="right" data-container="body" data-original-title="统计分析">
+                <i class="iconfont icon-statistics"></i> <span>统计分析</span></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    <div class="asScrollable-bar asScrollable-bar-vertical is-disabled asScrollable-bar-hide" draggable="false"><div class="asScrollable-bar-handle"></div></div></div>
+  </div>
+</div>
+  <div class="page-main">
+    <div class="page-main-header">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="narrow"><a href="#" id="navi-narrow-link" data-narrow="1"><i class="iconfont"></i></a></div>
+      <div class="navbar-header">通话记录</div>
+      <div class="collapse navbar-collapse navbar-collapse-toolbar">
+        <div class="navbar-search">
+          <form>
+            <div class="form-group">
+              <div class="input-search">
+                <i class="search-icon iconfont icon-search"></i>
+                <span class="twitter-typeahead" style="position: relative; display: inline-block;"><input type="text" class="form-control typeahead tt-hint" data-step="1" data-intro="快捷高效的模糊检索功能，帮您快速找到想要查看的客户" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);" dir="ltr"><input type="text" class="form-control typeahead tt-input" id="navbar-search-term" placeholder="输入客户名快速检索..." data-step="1" data-intro="快捷高效的模糊检索功能，帮您快速找到想要查看的客户" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;"><pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Microsoft YaHei&quot;, simsun; font-size: 18px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div class="tt-dataset tt-dataset-search-cutomers"></div></div></span>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
+          <li class="dropdown web-phone-dialpad-container">
+            <a data-toggle="dropdown" href="javascript:void(0)" title="呼叫中心" aria-expanded="false" data-animation="slide-bottom" role="button">
+              <i class="font-size-22 iconfont icon-tel" aria-hidden="true"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right web-phone-panel" role="menu" id="web-phone-panel">
+              <div class="web-phone-header" role="presentation">
+                <div class="pull-right margin-top-10"><span data-status="0" id="callcenter-seat-status" class="offline">离线</span>
+                </div>
+                <h5>呼叫中心 <span id="callcenter-phone"></span></h5>
+              </div>
+              <div class="web-phone-dialpad">
+                <div class="web-phone-dialpad-input-container">
+                  <input pattern="\d*" type="tel" placeholder="" id="dialpad-number-input">
+                  <a class="dialpad-number-backspace" id="dialpad-number-backspace" href="#">
+                    <i class="font-size-26 iconfont icon-backspace"></i>
+                  </a>
+                </div>
+
+                <ul class="web-phone-dialpad-number-container" id="web-phone-dialpad-number-container">
+                  <li data-value="1">1</li>
+                  <li data-value="2">2</li>
+                  <li data-value="3">3</li>
+                  <li data-value="4">4</li>
+                  <li data-value="5">5</li>
+                  <li data-value="6">6</li>
+                  <li data-value="7">7</li>
+                  <li data-value="8">8</li>
+                  <li data-value="9">9</li>
+                  <li data-value="*">*</li>
+                  <li data-value="0">0</li>
+                  <li data-value="#">#</li>
+                </ul>
+
+                <div class="text-center padding-bottom-20">
+                  <a id="dialpad-call-btn" class="dialpad-call-btn disabled" href="#">
+                    <i class="iconfont icon-tel"></i>
+                  </a>
+                  <div id="dialpad-message" class="margin-top-10 text-danger"></div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="dropdown notification">
+            <a data-toggle="dropdown" href="javascript:void(0)" title="通知提醒" aria-expanded="false" data-animation="slide-bottom" role="button">
+              <i class="font-size-22 iconfont icon-bell-black" aria-hidden="true"></i>
+              <span class="badge badge-danger up hide" id="notificationNum"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
+              <li class="dropdown-menu-header" role="presentation">
+                <h5>通知提醒</h5>
+              </li>
+              <li class="list-group" role="presentation">
+                <div data-role="container">
+                  <div data-role="content">
+                    <a class="list-group-item" role="menuitem" href="/customer?ownerUserId=QVtaSg%3D%3D&amp;endNextContactDate=2018-09-11">
+                      <div class="media">
+                        <div class="media-left padding-right-10">
+                          <i class="icon iconfont icon-company bg-red-600 white icon-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="media-heading">截至到今天需要需要联系的客户</h6>
+                          <time class="media-meta">合计 <span id="needContactCustomerNum">0</span></time>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="list-group-item" role="menuitem" href="/task?startDate=2018-09-11">
+                      <div class="media">
+                        <div class="media-left padding-right-10">
+                          <i class="icon iconfont icon-task bg-red-600 white icon-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="media-heading">截至到今天未完成的任务</h6>
+                          <time class="media-meta">合计 <span id="unfinishedTaskNum">0</span></time>
+                        </div>
+                      </div>
+                    </a>
+                    <a class="list-group-item" href="/contract?expireDay=30" role="menuitem">
+                      <div class="media">
+                        <div class="media-left padding-right-10">
+                          <i class="icon iconfont icon-contract bg-red-600 white icon-circle" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                          <h6 class="media-heading">30天内到期的合同</h6>
+                          <time class="media-meta">合计 <span id="expiredContractNum">0</span></time>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="dropdown-menu-footer" role="presentation">
+                <a href="/task" role="menuitem">查看所有任务提醒</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false" data-step="2" data-position="left" data-intro="点击这里可以进行系统设置(比如创建部门，员工等)以及个人设置(比如修改登录密码，头像等)">
+              <span class="avatar avatar-online">
+                <img class="brand-img" src="images/person-avatar.png">
+                <i></i>
+              </span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li role="presentation">
+                <a href="/profile" role="menuitem">
+                  <i class="icon iconfont icon-me" aria-hidden="true"></i> 个人信息</a>
+              </li>
+              
+                <li role="presentation">
+                  <a href="/setting" role="menuitem">
+                    <i class="icon iconfont icon-system-setting" aria-hidden="true"></i> 系统设置</a>
+                </li>
+              
+              <li role="presentation">
+                <a href="https://qikebao.kf5.com/forum/view/1047193/" role="menuitem" target="_blank">
+                  <i class="icon iconfont icon-help" aria-hidden="true"></i> 在线帮助</a>
+              </li>
+              <li role="presentation">
+                <a href="#" data-toggle="modal" data-target="#downloadAppModal" role="menuitem">
+                  <i class="icon iconfont icon-app" aria-hidden="true"></i> 下载手机App</a>
+              </li>
+              <li class="divider" role="presentation"></li>
+              <li role="presentation">
+                <a href="/logout" role="menuitem">
+                  <i class="icon iconfont icon-logout" aria-hidden="true"></i> 退出</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <script type="text/javascript">
+    /*<![CDATA[*/
+    $(function () {
+      loadNotification();
+      $("#aside-navi-wrap").asScrollable({
+        contentSelector: ">",
+        containerSelector: ">"
+      });
+      $("#navi-narrow-link").click(function (e) {
+        e.preventDefault();
+        $("#aside-navi-wrap").asScrollable('destroy');
+        var _narrow = $(this).data("narrow");
+        if (_narrow == "1") {
+          $(this).data("narrow", "0");
+          $("body>div.page").removeClass("narrow");
+        } else {
+          $(this).data("narrow", "1");
+          $("body>div.page").addClass("narrow");
+        }
+        setTimeout(function () {
+          $("#aside-navi-wrap").asScrollable({
+            contentSelector: ">",
+            containerSelector: ">"
+          });
+        }, 500);
+      });
+
+      $('.navbar .notification').on('shown.bs.dropdown', function () {
+        $(this).find('li.list-group').asScrollable({
+          contentSelector: ">",
+          containerSelector: ">"
+        });
+        loadNotification();
+      });
+
+      var customersBloodhound = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        remote: {
+          url: '/customer/search/all?term=%QUERY',
+          wildcard: '%QUERY'
+        }
+      });
+      customersBloodhound.initialize();
+
+      $('#navbar-search-term').typeahead({
+        minLength: 2
+      }, {
+        name: 'search-cutomers',
+        display: 'text',
+        limit: 20,
+        source: customersBloodhound,
+        templates: {
+          empty: [
+            '<div class="tt-suggestion empty-message">',
+            '没有找到符合条件的客户信息',
+            '</div>'
+          ].join('\n'),
+          suggestion: Handlebars.compile('<div><i class="iconfont icon-{{icon}} font-size-18"></i> {{text}}</div>')
+        }
+      });
+
+      $('#navbar-search-term').bind('typeahead:select', function (ev, suggestion) {
+        var _url = "";
+        if (suggestion.type == ENTITY_CUSTOMER) {
+          _url = "/customer/detail/";
+        } else {
+          _url = "/contact/detail/";
+        }
+        _url = _url + suggestion.id;
+        window.location = _url;
+      });
+
+      callcenter.init();
+    });
+
+    function loadNotification() {
+      $.ajax({
+        url: '/notification?random=' + Math.random(),
+        type: 'GET',
+        dataType: 'json',
+        timeout: 60000,
+        success: function (json) {
+          if (json.code <= 0) {
+            return;
+          }
+          $("#needContactCustomerNum").text(json.items.needContactCustomerNum);
+          $("#unfinishedTaskNum").text(json.items.unfinishedTaskNum);
+          $("#expiredContractNum").text(json.items.expiredContractNum);
+          var _totalNum = json.items.needContactCustomerNum + json.items.unfinishedTaskNum + json.items.expiredContractNum;
+          if (_totalNum > 0) {
+            $("#notificationNum").removeClass("hide").text(_totalNum);
+          } else {
+            $("#notificationNum").addClass("hide");
+          }
+        }
+      });
+    }
+
+    /*]]>*/
+  </script>
+  <script type="text/javascript" src="/script/callcenter.js?ver=1.11.0.1"></script>
+
+  <div class="modal fade" id="downloadAppModal" aria-hidden="true" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-center">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+          <h4 class="modal-title">下载安装企客宝旗舰版App</h4>
+        </div>
+        <div class="modal-body padding-horizontal-20">
+          <div class="padding-20">
+            <img src="/images/appqrcode.png?ver=1.11.0.1" width="200" height="200">
+            <p class="padding-top-10 text-muted">微信扫一扫下载</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+    <div class="page-main-container">
+      <div>
+        <div class="nav-tabs-horizontal">
+          <ul class="nav nav-tabs nav-tabs-line">
+            <li class="active">
+              <a href="records.html">通话记录</a></li>
+            <li>
+              <a href="/sms/records">短信记录</a></li>
+          </ul>
+          <div class="padding-top-20">
+  <form class="form-inline" id="search-record-form">
+    <div class="form-group">
+      <label class="control-label padding-right-10" for="search-customerId">所属客户</label>
+      <select class="form-control select2-hidden-accessible" name="search-customerId" id="search-customerId" data-plugin="select2" data-language="zh-CN" style="width:300px;" tabindex="-1" aria-hidden="true">
+        <option value="">全部</option>
+      </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 300px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-search-customerId-container"><span class="select2-selection__rendered" id="select2-search-customerId-container"><span class="select2-selection__placeholder">请输入客户名检索</span></span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+    </div>
+
+    <div class="form-group padding-left-10">
+      <label class="control-label padding-right-10" for="search-ownerUserId">员工</label>
+      <select class="form-control select2-hidden-accessible" name="search-ownerUserId" id="search-ownerUserId" data-plugin="select2" data-language="zh-CN" style="width:180px;" tabindex="-1" aria-hidden="true">
+        <option value="">全部</option>
+        <option value="QVtaSg==">孙伟</option>
+      </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 180px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-search-ownerUserId-container"><span class="select2-selection__rendered" id="select2-search-ownerUserId-container" title="全部">全部</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+    </div>
+
+    <div class="form-group padding-left-10">
+      <label class="control-label padding-right-10" for="search-startDate">通话时间</label>
+      <div class="input-group input-daterange" id="search-startDate">
+        <input type="text" class="form-control" value="" name="search-startStartDate" id="search-startStartDate">
+        <div class="input-group-addon">到</div>
+        <input type="text" class="form-control" value="" name="search-endStartDate" id="search-endStartDate">
+      </div>
+    </div>
+
+    <div class="form-group padding-left-10">
+      <label class="control-label padding-right-10" for="search-minTime">最小通话时长(秒)</label>
+      <input type="text" class="form-control" value="" name="search-minTime" id="search-minTime" style="width:80px">
+    </div>
+
+    <div class="form-group padding-left-10">
+      <label class="control-label padding-right-10" for="search-phone">电话号码</label>
+      <input type="text" class="form-control" value="" name="search-phone" id="search-phone">
+    </div>
+
+    <div class="form-group padding-left-10">
+      <button type="submit" class="btn btn-success btn-sm">搜索</button>
+    </div>
+  </form>
+
+  <div class="action-bar padding-top-10 clearfix">
+  </div>
+
+  <div class="table-responsive page-content-table padding-top-20" id="entity-item-list">
+    <table class="table table-pointer table-hover">
+      <thead>
+      <tr>
+        <th class="cell-60 text-center">编号</th>
+        <th class="cell-60 text-center">类型</th>
+        <th class="cell-120">电话</th>
+        <th class="cell-200">开始时间</th>
+        <th class="cell-100">时长</th>
+        <th class="cell-100">省份</th>
+        <th class="cell-100">城市</th>
+        <th>客户名称</th>
+        <th class="cell-100">联系人</th>
+        <th class="cell-100">员工</th>
+        <th class="cell-150">录音</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody id="record-body">
+      <tr id="item-clone" class="hide">
+        <td class="idx"></td>
+        <td><span class="record-type label"></span></td>
+        <td class="record-phone"></td>
+        <td class="record-startDate"></td>
+        <td class="record-totalTime"></td>
+        <td class="record-province"></td>
+        <td class="record-city"></td>
+        <td><a target="_blank" href="#" class="record-customerName"></a></td>
+        <td><a target="_blank" href="#" class="record-contactName"></a></td>
+        <td class="record-user"></td>
+        <td class="record-operation">
+          <button type="button" class="btn btn-sm btn-icon btn-flat btn-default btn-record" data-tooltip="tooltip" data-original-title="听录音" data-toggle="modal" data-target="#recordModal">
+            <i class="icon iconfont icon-record" aria-hidden="true"></i>
+          </button>
+          <a href="#" target="_blank" class="btn btn-sm btn-icon btn-flat btn-default btn-download" data-tooltip="tooltip" data-original-title="下载录音">
+            <i class="icon iconfont icon-download" aria-hidden="true"></i>
+          </a>
+        </td>
+        <td class="suf-cell"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+  <div class="pull-right">
+    <span id="page-bottom-tips" class="pull-left"></span>
+    <span class="dropup" id="dropdown-menu-pageSize" style="display: none;">
+      <button type="button" class="btn btn-pure" data-toggle="dropdown" aria-expanded="false">
+        <span class="pageSize">10条/页</span> <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu">
+        <li role="presentation">
+          <a href="javascript:void(0)" data-value="10" role="menuitem">10条/页</a></li>
+        <li role="presentation">
+          <a href="javascript:void(0)" data-value="20" role="menuitem">20条/页</a></li>
+        <li role="presentation">
+          <a href="javascript:void(0)" data-value="50" role="menuitem">50条/页</a></li>
+        <li role="presentation">
+          <a href="javascript:void(0)" data-value="100" role="menuitem">100条/页</a></li>
+      </ul>
+    </span>
+  </div>
+  <div class="pagination">
+    <div class="page-bottom" id="item-pageNavi" style="display: none;"></div>
+  </div>
+</div>
+
+  <div class="loading" id="search-loading" style="display: none;">
+  <div class="liner">
+    <h3>加载中...</h3>
+    <img alt="加载中" src="/images/dots-white.gif">
+  </div>
+</div>
+
+  <!--<div id="record-blank" class="loading" style="display: block;">
+  <div class="liner">
+    <h3>没有找到相关通话记录</h3>
+  </div>
+</div>-->
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="recordModal" aria-hidden="true" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-center">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+        <h4 class="modal-title">通话录音</h4>
+      </div>
+      <div class="modal-body padding-horizontal-20">
+        <div class="media">
+          <div class="media-left"><i class="icon iconfont icon-tel-busy font-size-40"></i></div>
+          <div class="media-body padding-left-10">
+            <h4 class="media-heading"><span class="record-type label"></span> <span class="record-phone"></span></h4>
+            <p>
+              开始时间：<span class="record-startDate"></span>
+            </p>
+          </div>
+        </div>
+        <div id="recordModal-audio" class="padding-vertical-20"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  /*<![CDATA[*/
+  var _loginUserId = "QVtaSg==";
+  var _pageSize = 10;
+
+  var _users = [{"name":"\u5B59\u4F1F","imgPath":"images/person-avatar.png","valid":true,"encodedGroupId":"","encodedId":"QVtaSg=="}];
+  /*]]>*/
+</script>
+
+<link rel="stylesheet" href="css/vendor/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="css/vendor/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="css/vendor/bootstrap-select2.min.css">
+<link rel="stylesheet" href="css/vendor/magnific-popup.min.css">
+<link rel="stylesheet" href="css/vendor/audioplayer.css">
+<script type="text/javascript" src="script/vendor/moment.min.js"></script>
+<script type="text/javascript" src="script/vendor/bootstrap-datepicker.min.js"></script>
+<script type="text/javascript" src="script/vendor/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="script/vendor/bootstrap-select2.min.js"></script>
+<script type="text/javascript" src="script/vendor/jquery-ui.min.js"></script>
+<script type="text/javascript" src="script/vendor/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="script/vendor/audioplayer.min.js"></script>
+<script type="text/javascript" src="script/callCenter-records-list.js"></script>
+<script type="text/javascript" src="script/pageNavi.js"></script>
+</body>
+</html>

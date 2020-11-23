@@ -1,0 +1,32 @@
+mybatis-plus:
+  global-config:
+    # 逻辑删除配置
+    db-config:
+      # 逻辑删除字段
+      logic-delete-field: flag
+      # 逻辑已删除值
+      logic-delete-value: 1
+      # 逻辑未删除值
+      logic-not-delete-value: 0
+  configuration:
+    # 打印SQL语句
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    # 开启下划线与驼峰转换
+    map-underscore-to-camel-case: true
+server:
+  port: 58080
+spring:
+  datasource:
+    username: root
+    password: '@1234567890'
+    url: jdbc:mysql://127.0.0.1:3306/qikebao?useUnicode=true&charset=utf8mb4&serverTimezone=UTC
+  servlet:
+    # 不限制文件上传数量和大小
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: GMT+8
+file:
+  location: /Users/jiangwen/Develop/file/

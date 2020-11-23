@@ -1,0 +1,595 @@
+﻿<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="_fragments :: import(~{:: title})">
+    <title>企客宝客户管理系统-产品信息</title>
+</head>
+<body class="app-product" style="padding-right: 0px;">
+<div id="app">
+    <div class="page narrow">
+        <div th:replace="_fragments :: aside"></div>
+        <div class="page-main">
+            <div th:replace="_fragments :: navbar"></div>
+            <div class="page-main-container flex-container">
+                <div class="page-main-aside">
+                    <div class="page-aside-inner">
+                        <div data-role="container">
+                            <div data-role="content">
+                                <section class="page-aside-section">
+                                    <h5 class="page-aside-title">产品分类</h5>
+                                    <div id="productCategoriesTree" class="treeview">
+                                        <div class="list-group">
+                                            <div v-for="(item, index) in productTypes">
+                                                <div class="list-group-item node-productCategoriesTree" data-nodeid="0"
+                                                     @click="changeSelectedProductType(item.id)"
+                                                     :style="item.id === currentProductTypeId ? 'color:#FFFFFF;background-color:#3949ab;' : 'color: unset; background-color: unset;'">
+                                                    <span class="icon expand-icon iconfont icon-folder-open"></span>
+                                                    {{ item.name }}
+                                                    <a class="action-icon pull-right action-icon-delete icon iconfont icon-close"
+                                                       href="#"></a>
+                                                    <a class="action-icon pull-right action-icon-edit icon iconfont icon-edit"
+                                                       href="#"></a>
+                                                    <a class="action-icon pull-right action-icon-add icon iconfont icon-plus"
+                                                       href="#"></a>
+                                                </div>
+                                                <div v-if="item.children.length !== 0">
+                                                    <div class="list-group-item node-productCategoriesTree"
+                                                         v-for="(subItem, subIndex) in item.children"
+                                                         @click="changeSelectedProductType(subItem.id)"
+                                                         data-nodeid="1"
+                                                         :style="subItem.id === currentProductTypeId ? 'color:#FFFFFF;background-color:#3949ab;' : 'color: unset; background-color: unset;'">
+                                                        <span class="indent"></span>
+                                                        <span class="icon expand-icon iconfont icon-folder-open"></span>
+                                                        {{ subItem.name }}
+                                                        <a class="action-icon pull-right action-icon-delete icon iconfont icon-close"
+                                                           href="#"></a>
+                                                        <a class="action-icon pull-right action-icon-edit icon iconfont icon-edit"
+                                                           href="#"></a>
+                                                        <a class="action-icon pull-right action-icon-add icon iconfont icon-plus"
+                                                           href="#"></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-main-content">
+                    <div class="pull-right page-main-actions">
+                        <button type="button" data-toggle="modal" data-target="#productModal"
+                                class="btn btn-success btn-sm">
+                            创建产品信息
+                        </button>
+                    </div>
+                    <div class="padding-top-20"></div>
+                    <hr>
+                    <div>
+                        <input type="hidden" id="isSelectModal" value="0">
+
+                        <div class="action-bar padding-top-10 clearfix">
+                            <div class="pull-right">
+                                <div>
+                                    <form id="search-field-form">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-btn auto-width dropdown" id="search-dropdown">
+                                                    <button class="btn btn-default btn-inverse" type="button"
+                                                            data-toggle="dropdown" aria-haspopup="true"
+                                                            aria-expanded="false">
+                                                    <span id="search-dropdown-label" data-id="name" data-description="1"
+                                                          data-type="1">产品名</span>
+                                                        <span class="caret"></span>
+                                                    </button>
+                                                    <div class="dropdown-menu" role="menu">
+                                                        <div class="dropdown-menu-list" style="max-height:400px;"
+                                                             id="search-dropdown-list">
+                                                            <div data-role="container">
+                                                                <div data-role="content">
+                                                                    <div role="presentation" class="dropdown-menu-item">
+                                                                        <a href="#" role="menuitem" data-description="1"
+                                                                           data-id="name" data-type="1">产品名</a></div>
+
+
+                                                                    <div role="presentation" class="dropdown-menu-item">
+                                                                        <a href="#" role="menuitem" data-id="124569"
+                                                                           data-type="1" data-description="2">简介</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <span id="search-control-container">
+          <input type="text" class="form-control search-control" id="search-field-keyword" placeholder="检索...">
+
+          <div class="input-daterange clearfix search-control hide" data-plugin="datepicker"
+               id="search-field-datepicker">
+            <div class="input-group">
+              <input type="text" class="form-control" id="search-field-start" style="width:120px">
+            </div>
+            <div class="input-group">
+              <input type="text" class="form-control" id="search-field-end" style="width:120px">
+            </div>
+          </div>
+
+          <div class="input-daterange clearfix search-control hide" id="search-field-number">
+            <div class="input-group">
+              <input type="text" class="form-control" id="search-field-min" style="width:120px">
+            </div>
+            <div class="input-group">
+              <input type="text" class="form-control" id="search-field-max" style="width:120px">
+            </div>
+          </div>
+
+          <select class="form-control search-control hide" id="search-field-select">
+          </select>
+        </span>
+
+                                                <span class="input-group-btn auto-width">
+          <button type="submit" id="search-field-button" class="btn btn-success"><i class="icon iconfont icon-search"
+                                                                                    aria-hidden="true"></i></button>
+        </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn btn-sm btn-default" id="entity-list-delete-btn"
+                                    data-name="product" data-containerid="product-item-list"
+                                    data-confirm="确认要删除该产品信息吗？删除后不可恢复">
+                                <i class="icon iconfont icon-trash" aria-hidden="true"></i>删除
+                            </button>
+
+                            <span class="dropdown" id="dropdown-entity-fields">
+  <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" href="#"
+          aria-expanded="false">显示列
+    <span class="caret"></span></button>
+  <div class="dropdown-menu dropdown-menu-checkbox-container" role="menu" id="entity-fields-container">
+    <div class="dropdown-menu-checkbox-list">
+      <div data-role="container">
+        <div data-role="content">
+          <span role="presentation" class="padding-horizontal-20 checkbox-item">
+            <div class="checkbox-custom checkbox-dark">
+              <input type="checkbox" name="field-checkbox" value="no" id="entity-setting-field-item-no"
+                     checked="checked">
+              <label for="entity-setting-field-item-no">编号</label>
+            </div>
+          </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
+            <div class="checkbox-custom checkbox-dark">
+              <input type="checkbox" name="field-checkbox" value="unit" id="entity-setting-field-item-unit"
+                     checked="checked">
+              <label for="entity-setting-field-item-unit">单位</label>
+            </div>
+          </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
+            <div class="checkbox-custom checkbox-dark">
+              <input type="checkbox" name="field-checkbox" value="amount" id="entity-setting-field-item-amount"
+                     checked="checked">
+              <label for="entity-setting-field-item-amount">销售价格</label>
+            </div>
+          </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
+            <div class="checkbox-custom checkbox-dark">
+              <input type="checkbox" name="field-checkbox" value="cost" id="entity-setting-field-item-cost"
+                     checked="checked">
+              <label for="entity-setting-field-item-cost">成本</label>
+            </div>
+          </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
+            <div class="checkbox-custom checkbox-dark">
+              <input type="checkbox" name="field-checkbox" value="124569" id="entity-setting-field-item-124569">
+              <label for="entity-setting-field-item-124569">简介</label>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <p class="padding-horizontal-20">
+      <button id="change-fields-btn" type="button" class="btn btn-primary btn-sm btn-block">保存设置</button>
+    </p>
+  </div>
+</span>
+                        </div>
+
+                        <div class="table-responsive page-content-table padding-top-20" id="product-item-list">
+                            <table class="table table-pointer table-hover sindu_origin_table" id="product-list-table">
+                                <thead>
+                                <tr data-product="true">
+                                    <th class="cell-60 text-center idx">
+                                        <div class="checkbox-custom checkbox-primary">
+                                            <input type="checkbox" name="item-all-checkbox">
+                                            <label></label>
+                                        </div>
+                                    </th>
+                                    <th class="cell-300">
+                                        <a class="sort-title asc" href="#" data-sortfield="" data-sortorder="1">产品名称</a>
+                                    </th>
+
+                                    <th id="header-field-no" class="handle cell-180 sindu_handle" data-field="no">
+                                        <a href="#" data-sortorder="0" class="sort-title" data-sortfield="no">编号</a>
+
+                                    </th>
+                                    <th id="header-field-unit" class="handle cell-180 sindu_handle" data-field="unit">
+                                        <a href="#" data-sortorder="0" class="sort-title" data-sortfield="unit">单位</a>
+
+                                    </th>
+                                    <th id="header-field-amount" class="handle cell-180 sindu_handle"
+                                        data-field="amount">
+                                        <a href="#" data-sortorder="0" class="sort-title"
+                                           data-sortfield="amount">销售价格</a>
+
+                                    </th>
+                                    <th id="header-field-cost" class="handle cell-180 sindu_handle" data-field="cost">
+                                        <a href="#" data-sortorder="0" class="sort-title" data-sortfield="cost">成本</a>
+
+                                    </th>
+                                    <th id="header-field-124569" class="handle cell-180 hide sindu_handle"
+                                        data-field="124569">
+
+                                        <span>简介</span>
+                                    </th>
+
+
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody id="product-body">
+                                <tr id="product-item-clone" class="hide">
+                                    <td class="idx">
+                                        <div class="checkbox-custom checkbox-primary">
+                                            <input type="checkbox" name="item-checkbox">
+                                            <label></label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="item-name">
+                                            <span class="label label-danger margin-right-5 hide">无效</span>
+                                        </a>
+                                    </td>
+
+                                    <td class="item-no">
+
+                                    </td>
+                                    <td class="item-unit">
+
+                                    </td>
+                                    <td class="item-amount">
+
+                                    </td>
+                                    <td class="item-cost">
+
+                                    </td>
+                                    <td class="item-124569 hide">
+
+                                    </td>
+                                    <td class="suf-cell"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>
+                            <div class="pull-right">
+      <span class="dropup" id="product-dropdown-menu-pageSize" style="display: none;">
+        <button type="button" class="btn btn-pure" data-toggle="dropdown" aria-expanded="false">
+          <span class="pageSize">10条/页</span> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+          <li role="presentation">
+            <a href="javascript:void(0)" data-value="10" role="menuitem">10条/页</a></li>
+          <li role="presentation">
+            <a href="javascript:void(0)" data-value="20" role="menuitem">20条/页</a></li>
+          <li role="presentation">
+            <a href="javascript:void(0)" data-value="50" role="menuitem">50条/页</a></li>
+          <li role="presentation">
+            <a href="javascript:void(0)" data-value="100" role="menuitem">100条/页</a></li>
+        </ul>
+      </span>
+                            </div>
+                            <div class="pagination">
+                                <div class="page-bottom" id="product-item-pageNavi" style="display: none;"></div>
+                            </div>
+                        </div>
+
+                        <div class="loading" id="product-search-loading" style="display: none;">
+                            <div class="liner">
+                                <h3>加载中...</h3>
+                                <img alt="加载中" src="/images/dots-white.gif">
+                            </div>
+                        </div>
+
+                        <div id="product-blank" class="loading" style="display: block;">
+                            <div class="liner">
+                                <h3>{{ message }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="showAddAction" value="1">
+
+
+    <input type="hidden" id="showUpdateAction" value="1">
+
+
+    <input type="hidden" id="showDeleteAction" value="1">
+
+
+    <div class="modal fade" id="productCategoryModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false" tabindex="-1" style="display: none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title" id="product-categoryModal-title">创建产品分类</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                    <form id="form-add-product-category">
+                        <div class="form-group">
+                            <label class="control-label required" for="product-category-name">分类名称</label>
+                            <input class="form-control" id="product-category-name" name="product-category-name"
+                                   data-field-required="true" value="">
+                            <small class="help-block"></small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="add-update-product-category-btn" type="button">确定</button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="productModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false"
+         tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">创建产品信息</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                    <form class="form-horizontal" id="form-add-product">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label required" for="product-name">产品名称</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="product-name" name="product-name"
+                                       data-field-required="true"
+                                       v-model="productName">
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label required" for="product-no">产品编号</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="product-no" name="product-no" data-field-required="true"
+                                       v-model="productNum">
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="product-productCategoryId">产品分类</label>
+                            <div class="col-sm-9">
+                                <select class="form-control select2-hidden-accessible" name="product-productCategoryId"
+                                        id="product-productCategoryId" data-plugin="select2" data-language="zh-CN"
+                                        @change="selectProductType($event)"
+                                        data-width="100%" tabindex="-1" aria-hidden="true">
+                                    <option v-for="(item, index) in productTypesList" :key="index" :value="item.id">
+                                        {{ item.name }}
+                                    </option>
+                                </select><span class="select2 select2-container select2-container--default" dir="ltr"
+                                               style="width: 100%;"><span class="selection"><span
+                                    class="select2-selection select2-selection--single" role="combobox"
+                                    aria-haspopup="true"
+                                    aria-expanded="false" tabindex="0"
+                                    aria-labelledby="select2-product-productCategoryId-container"><span
+                                    class="select2-selection__rendered" id="select2-product-productCategoryId-container"
+                                    title="全部">全部</span><span class="select2-selection__arrow" role="presentation"><b
+                                    role="presentation"></b></span></span></span><span class="dropdown-wrapper"
+                                                                                       aria-hidden="true"></span></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label required" for="product-unit">产品单位</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="product-unit" name="product-unit"
+                                       data-field-required="true"
+                                       v-model="productUnit">
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label required" for="product-amount">产品售价</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="product-amount" name="product-amount"
+                                       data-field-required="true" data-field-number="true"
+                                       v-model="productPrice">
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label" for="product-cost">产品成本</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" id="product-cost" name="product-cost"
+                                       data-field-number="true"
+                                       v-model="productCost">
+                                <small class="help-block"></small>
+                            </div>
+                        </div>
+
+                        <div id="entity-field-custom">
+
+                            <div class="form-group">
+
+                                <label class="col-sm-3 control-label" for="product-field-custom-124569">简介</label>
+
+                                <div class="col-sm-9">
+
+
+                                <textarea v-model="introduction" class="form-control" name="product-field-124569"
+                                          data-field-required="false"
+                                          data-duplicate-key="124569" data-duplicate="false"></textarea>
+
+
+                                    <small class="help-block"></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <a class="col-sm-12 toggle-entity-field-custom-link" href="#"><i
+                                    class="icon iconfont icon-plus"></i>
+                                显示更多</a>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="add-product-btn" type="button">确定</button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="attachmentModal" aria-hidden="true" role="dialog" data-backdrop="static"
+         data-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true" data-dismiss="modal">×</button>
+                    <h4 class="modal-title">上传附件</h4>
+                </div>
+                <div class="modal-body padding-horizontal-20">
+                    <form id="form-add-attachment">
+                        <div class="form-group">
+                            <label class="control-label">附件</label>
+                            <div>
+              <span id="attachment-fileupload-btn-container">
+                <button type="button" id="attachment-fileupload-btn"
+                        class="btn btn-pure btn-dark icon iconfont icon-attachment"> 添加附件 </button>
+              </span>
+                                <div id="attachment-upload-attachments" class="upload-attachments">
+                                    <div class="upload-attachment-item hide"
+                                         id="attachment-upload-attachment-item-clone">
+                                        <i class="icon iconfont icon-attachment"></i>
+                                        <span class="file-name padding-right-5"></span>(<span class="file-size"></span>)
+                                        <span class="file-progress padding-left-10"></span>
+                                        <a href="#" class="file-remove-link">删除</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="attachment-remark">备注</label>
+                            <textarea class="form-control" id="attachment-remark" name="attachment-remark"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="add-attachment-btn" type="button">确定</button>
+                    <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  new Vue({
+    el: '#app',
+    data () {
+      return {
+        // 产品类型（树形）
+        productTypes: [],
+        // 产品类型（列表）
+        productTypesList: [],
+        // 提示信息
+        message: '没有找到相关产品信息',
+        // 当前在右侧树形菜单选中的产品类型编号
+        currentProductTypeId: 1,
+        // 添加产品：已选择的产品类型编号
+        selectedProductType: 1,
+        // 产品名称
+        productName: '',
+        // 产品编号
+        productNum: '',
+        // 产品单位
+        productUnit: '',
+        // 产品售价
+        productPrice: '',
+        // 产品成本
+        productCost: '',
+        // 简介
+        introduction: ''
+      }
+    },
+    mounted () {
+      // 加载树形产品类型列表
+      axios
+        .get('/productType/tree')
+        .then(response => {
+          if (response.data.code === 0) {
+            this.productTypes = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch(error => console.log(error))
+
+      // 加载列表形产品类型列表
+      axios
+        .get('/productType/list')
+        .then(response => {
+          if (response.data.code === 0) {
+            this.productTypesList = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch(error => console.log(error))
+    },
+    methods: {
+      changeSelectedProductType (id) {
+        this.currentProductTypeId = id
+      },
+      selectProductType (e) {
+        this.selectedProductType = e.target.value
+      },
+      addProduct () {
+        axios
+          .post('/product/add', {
+            'name': this.productName,
+            'number': this.productNum,
+            'type': this.selectedProductType,
+            'unit': this.productUnit,
+            'price': this.productPrice,
+            'cost': this.productCost,
+            'introduction': this.introduction
+          })
+          .then(response => {
+            if (response.data.code === 0) {
+              alert('添加产品成功')
+              location.reload()
+            } else {
+              alert(response.data.message)
+            }
+          })
+          .catch(error => console.log(error))
+      }
+    }
+  })
+</script>
+</body>
+</html>
