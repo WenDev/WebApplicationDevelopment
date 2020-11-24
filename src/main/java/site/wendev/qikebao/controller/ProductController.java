@@ -13,6 +13,7 @@ import site.wendev.qikebao.vo.SearchProductVO;
 
 import javax.validation.Valid;
 import java.math.BigInteger;
+import java.util.List;
 
 /**
  * @author 江文
@@ -40,12 +41,12 @@ public class ProductController {
         return ResponseUtil.success(productService.addProduct(vo));
     }
 
-    @DeleteMapping("/delete")
-    public Response deleteProduct(BigInteger id) {
-        if (productService.removeById(id)) {
-            return ResponseUtil.success(id);
+    @PostMapping("/delete")
+    public Response deleteProduct(@RequestBody List<BigInteger> ids) {
+        if (productService.removeByIds(ids)) {
+            return ResponseUtil.success(ids);
         } else {
-            return ResponseUtil.error(ErrorEnum.DELETE_ERROR, "删除产品失败，该产品不存在");
+            return ResponseUtil.error(ErrorEnum.DELETE_ERROR, "删除产品失败，要删除的产品不存在");
         }
     }
 }

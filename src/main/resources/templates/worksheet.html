@@ -123,7 +123,8 @@
                         </div>
                     </div>
 
-                    <div id="worksheet-blank" class="loading" style="display: block;" v-if="worksheets === []">
+                    <div id="worksheet-blank" class="loading" style="display: block;"
+                         v-if="worksheets.content.length === 0">
                         <div class="liner">
                             <h3>{{ message }}</h3>
                         </div>
@@ -491,6 +492,11 @@
     },
     methods: {
       loadWorksheets () {
+        if (this.worksheetSearchTitle !== ''
+          || this.worksheetSearchStartTime !== ''
+          || this.worksheetSearchEndTime !== '') {
+          this.searchWorksheet()
+        }
         // 加载工单列表
         axios
           .get('/worksheet/list', {

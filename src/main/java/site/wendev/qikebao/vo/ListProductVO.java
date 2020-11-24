@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
+import java.math.BigInteger;
+
 /**
  * @author 江文
  * @since 2020/11/23 8:59 下午
@@ -12,4 +14,5 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 @EqualsAndHashCode(callSuper = false)
 public class ListProductVO extends BasePageVO<ListProductVO> {
+    private BigInteger type;
 }

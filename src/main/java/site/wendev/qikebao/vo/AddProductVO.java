@@ -7,6 +7,7 @@ import org.springframework.beans.BeanUtils;
 import site.wendev.qikebao.entities.Product;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
@@ -30,7 +31,7 @@ public class AddProductVO extends BaseVO<Product> {
     @NotBlank(message = "添加失败：产品单位不能为空")
     private String unit;
 
-    @NotBlank(message = "添加失败：产品售价不能为空")
+    @NotNull(message = "添加失败：产品售价不能为空")
     private BigDecimal price;
     private BigDecimal cost;
     private String introduction;

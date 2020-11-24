@@ -33,10 +33,12 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
 
     @Override
     public PageResponse<Product> listProduct(ListProductVO vo) {
+        QueryWrapper<Product> qw = new QueryWrapper<>();
+        qw.eq("type", vo.getType());
         PageResponse<Product> pageResponse = new PageResponse<Product>().setPageAndSize(vo);
         pageResponse.setTotal(countProducts());
         pageResponse.setContent(
-                mapper.selectPage(new Page<>(vo.getPage(), vo.getSize()), null).getRecords());
+                mapper.selectPage(new Page<>(vo.getPage(), vo.getSize()), qw).getRecords());
 
         return pageResponse;
     }
@@ -44,6 +46,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
     @Override
     public PageResponse<Product> searchProduct(SearchProductVO vo) {
         QueryWrapper<Product> qw = new QueryWrapper<>();
+        qw.eq("type", vo.getType());
+
         if (StringUtils.isNotBlank(vo.getName())) {
             qw.like("name", vo.getName());
         }

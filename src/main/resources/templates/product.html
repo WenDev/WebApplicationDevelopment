@@ -79,7 +79,7 @@
                                                             data-toggle="dropdown" aria-haspopup="true"
                                                             aria-expanded="false">
                                                     <span id="search-dropdown-label" data-id="name" data-description="1"
-                                                          data-type="1">产品名</span>
+                                                          data-type="1">{{ searchCondition === true ? '产品名' : '简介' }}</span>
                                                         <span class="caret"></span>
                                                     </button>
                                                     <div class="dropdown-menu" role="menu">
@@ -89,11 +89,13 @@
                                                                 <div data-role="content">
                                                                     <div role="presentation" class="dropdown-menu-item">
                                                                         <a href="#" role="menuitem" data-description="1"
+                                                                           @click="changeSearchProductType(true)"
                                                                            data-id="name" data-type="1">产品名</a></div>
 
 
                                                                     <div role="presentation" class="dropdown-menu-item">
                                                                         <a href="#" role="menuitem" data-id="124569"
+                                                                           @click="changeSearchProductType(false)"
                                                                            data-type="1" data-description="2">简介</a>
                                                                     </div>
                                                                 </div>
@@ -103,7 +105,8 @@
                                                 </div>
 
                                                 <span id="search-control-container">
-          <input type="text" class="form-control search-control" id="search-field-keyword" placeholder="检索...">
+          <input v-model="searchText" type="text" class="form-control search-control" id="search-field-keyword"
+                 placeholder="检索...">
 
           <div class="input-daterange clearfix search-control hide" data-plugin="datepicker"
                id="search-field-datepicker">
@@ -129,8 +132,9 @@
         </span>
 
                                                 <span class="input-group-btn auto-width">
-          <button type="submit" id="search-field-button" class="btn btn-success"><i class="icon iconfont icon-search"
-                                                                                    aria-hidden="true"></i></button>
+          <button type="button" @click="searchProduct" id="search-field-button" class="btn btn-success"><i
+                  class="icon iconfont icon-search"
+                  aria-hidden="true"></i></button>
         </span>
                                             </div>
                                         </div>
@@ -140,7 +144,7 @@
 
                             <button type="button" class="btn btn-sm btn-default" id="entity-list-delete-btn"
                                     data-name="product" data-containerid="product-item-list"
-                                    data-confirm="确认要删除该产品信息吗？删除后不可恢复">
+                                    data-confirm="确认要删除该产品信息吗？删除后不可恢复" @click="deleteProduct">
                                 <i class="icon iconfont icon-trash" aria-hidden="true"></i>删除
                             </button>
 
@@ -155,30 +159,31 @@
           <span role="presentation" class="padding-horizontal-20 checkbox-item">
             <div class="checkbox-custom checkbox-dark">
               <input type="checkbox" name="field-checkbox" value="no" id="entity-setting-field-item-no"
-                     checked="checked">
+                     :checked="showNumber" @click="showNumber = !showNumber">
               <label for="entity-setting-field-item-no">编号</label>
             </div>
           </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
             <div class="checkbox-custom checkbox-dark">
               <input type="checkbox" name="field-checkbox" value="unit" id="entity-setting-field-item-unit"
-                     checked="checked">
+                     :checked="showUnit" @click="showUnit = !showUnit">
               <label for="entity-setting-field-item-unit">单位</label>
             </div>
           </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
             <div class="checkbox-custom checkbox-dark">
               <input type="checkbox" name="field-checkbox" value="amount" id="entity-setting-field-item-amount"
-                     checked="checked">
+                     :checked="showPrice" @click="showPrice = !showPrice">
               <label for="entity-setting-field-item-amount">销售价格</label>
             </div>
           </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
             <div class="checkbox-custom checkbox-dark">
               <input type="checkbox" name="field-checkbox" value="cost" id="entity-setting-field-item-cost"
-                     checked="checked">
+                     :checked="showCost" @click="showCost = !showCost">
               <label for="entity-setting-field-item-cost">成本</label>
             </div>
           </span><span role="presentation" class="padding-horizontal-20 checkbox-item">
             <div class="checkbox-custom checkbox-dark">
-              <input type="checkbox" name="field-checkbox" value="124569" id="entity-setting-field-item-124569">
+              <input type="checkbox" name="field-checkbox" value="124569" id="entity-setting-field-item-124569"
+                     :checked="showIntroduction" @click="showIntroduction = !showIntroduction">
               <label for="entity-setting-field-item-124569">简介</label>
             </div>
           </span>
@@ -198,7 +203,8 @@
                                 <tr data-product="true">
                                     <th class="cell-60 text-center idx">
                                         <div class="checkbox-custom checkbox-primary">
-                                            <input type="checkbox" name="item-all-checkbox">
+                                            <input type="checkbox" name="item-all-checkbox" @click="checkAllProducts"
+                                                   :checked="deleteProducts.length === products.content.length">
                                             <label></label>
                                         </div>
                                     </th>
@@ -206,62 +212,61 @@
                                         <a class="sort-title asc" href="#" data-sortfield="" data-sortorder="1">产品名称</a>
                                     </th>
 
-                                    <th id="header-field-no" class="handle cell-180 sindu_handle" data-field="no">
+                                    <th v-if="showNumber" id="header-field-no" class="handle cell-180 sindu_handle"
+                                        data-field="no">
                                         <a href="#" data-sortorder="0" class="sort-title" data-sortfield="no">编号</a>
-
                                     </th>
-                                    <th id="header-field-unit" class="handle cell-180 sindu_handle" data-field="unit">
+                                    <th v-if="showUnit" id="header-field-unit" class="handle cell-180 sindu_handle"
+                                        data-field="unit">
                                         <a href="#" data-sortorder="0" class="sort-title" data-sortfield="unit">单位</a>
-
                                     </th>
-                                    <th id="header-field-amount" class="handle cell-180 sindu_handle"
+                                    <th v-if="showPrice" id="header-field-amount" class="handle cell-180 sindu_handle"
                                         data-field="amount">
                                         <a href="#" data-sortorder="0" class="sort-title"
                                            data-sortfield="amount">销售价格</a>
-
                                     </th>
-                                    <th id="header-field-cost" class="handle cell-180 sindu_handle" data-field="cost">
+                                    <th v-if="showCost" id="header-field-cost" class="handle cell-180 sindu_handle"
+                                        data-field="cost">
                                         <a href="#" data-sortorder="0" class="sort-title" data-sortfield="cost">成本</a>
-
                                     </th>
-                                    <th id="header-field-124569" class="handle cell-180 hide sindu_handle"
+                                    <th v-if="showIntroduction" id="header-field-124569"
+                                        class="handle cell-180 sindu_handle"
                                         data-field="124569">
-
                                         <span>简介</span>
                                     </th>
-
-
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody id="product-body">
-                                <tr id="product-item-clone" class="hide">
+                                <tr id="product-item-clone" v-for="(item, index) in products.content">
                                     <td class="idx">
                                         <div class="checkbox-custom checkbox-primary">
-                                            <input type="checkbox" name="item-checkbox">
+                                            <input type="checkbox" name="item-checkbox"
+                                                   :checked="deleteProducts.indexOf(item.id) >= 0"
+                                                   @click="checkOneProduct(item.id)">
                                             <label></label>
                                         </div>
                                     </td>
                                     <td>
                                         <a href="#" class="item-name">
-                                            <span class="label label-danger margin-right-5 hide">无效</span>
+                                            <span class="label label-danger margin-right-5">{{ item.name }}</span>
                                         </a>
                                     </td>
 
-                                    <td class="item-no">
-
+                                    <td class="item-no" v-if="showNumber">
+                                        {{ item.number }}
                                     </td>
-                                    <td class="item-unit">
-
+                                    <td class="item-unit" v-if="showUnit">
+                                        {{ item.unit }}
                                     </td>
-                                    <td class="item-amount">
-
+                                    <td class="item-amount" v-if="showPrice">
+                                        {{ item.price }}
                                     </td>
-                                    <td class="item-cost">
-
+                                    <td class="item-cost" v-if="showCost">
+                                        {{ item.cost }}
                                     </td>
-                                    <td class="item-124569 hide">
-
+                                    <td class="item-124569" v-if="showIntroduction">
+                                        {{ item.introduction }}
                                     </td>
                                     <td class="suf-cell"></td>
                                 </tr>
@@ -299,7 +304,8 @@
                             </div>
                         </div>
 
-                        <div id="product-blank" class="loading" style="display: block;">
+                        <div id="product-blank" class="loading" style="display: block;"
+                             v-if="products.content.length === 0">
                             <div class="liner">
                                 <h3>{{ message }}</h3>
                             </div>
@@ -320,7 +326,7 @@
 
 
     <div class="modal fade" id="productCategoryModal" aria-hidden="true" role="dialog" data-backdrop="static"
-         data-keyboard="false" tabindex="-1" style="display: none;">
+         data-keyboard="false" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -456,7 +462,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" id="add-product-btn" type="button">确定</button>
+                    <button class="btn btn-primary" id="add-product-btn" type="button" @click="addProduct">确定</button>
                     <a class="btn btn-sm btn-white btn-pure" data-dismiss="modal" href="javascript:void(0)">取消</a>
                 </div>
             </div>
@@ -515,6 +521,8 @@
         productTypes: [],
         // 产品类型（列表）
         productTypesList: [],
+        // 产品列表
+        products: [],
         // 提示信息
         message: '没有找到相关产品信息',
         // 当前在右侧树形菜单选中的产品类型编号
@@ -532,7 +540,35 @@
         // 产品成本
         productCost: '',
         // 简介
-        introduction: ''
+        introduction: '',
+        // 当前是第几页
+        page: 1,
+        // 每页多少条数据
+        size: 10,
+        // 根据产品名搜索产品
+        searchProductName: '',
+        // 根据产品简介搜索产品
+        searchProductIntroduction: '',
+        // 搜索条件：为true则按产品名称搜索，false则按简介搜索
+        searchCondition: true,
+        // 搜索框输入内容，为名称或简介
+        searchText: '',
+        // 存放要删除的产品的数组
+        deleteProducts: [],
+        // 是否全选
+        isCheckedAll: false,
+        // 编号列是否显示
+        showNumber: true,
+        // 单位列是否显示
+        showUnit: true,
+        // 价格列是否显示
+        showPrice: true,
+        // 成本列是否显示
+        showCost: true,
+        // 简介列是否显示
+        showIntroduction: false,
+        // 是否显示添加产品类型的弹窗
+        showAddProductType: false
       }
     },
     mounted () {
@@ -559,10 +595,44 @@
           }
         })
         .catch(error => console.log(error))
+
+      // 加载产品列表
+      axios.get('/product/list', {
+        params: {
+          page: this.page,
+          size: this.size,
+          type: this.currentProductTypeId
+        }
+      })
+        .then(response => {
+          if (response.data.code === 0) {
+            this.products = response.data.data
+          } else {
+            this.message = response.data.message
+          }
+        })
+        .catch(error => console.log(error))
     },
     methods: {
       changeSelectedProductType (id) {
         this.currentProductTypeId = id
+
+        // 重新加载产品列表
+        axios.get('/product/list', {
+          params: {
+            page: this.page,
+            size: this.size,
+            type: this.currentProductTypeId
+          }
+        })
+          .then(response => {
+            if (response.data.code === 0) {
+              this.products = response.data.data
+            } else {
+              this.message = response.data.message
+            }
+          })
+          .catch(error => console.log(error))
       },
       selectProductType (e) {
         this.selectedProductType = e.target.value
@@ -587,6 +657,105 @@
             }
           })
           .catch(error => console.log(error))
+      },
+      changeSearchProductType (condition) {
+        this.searchCondition = condition
+      },
+      searchProduct () {
+        if (this.searchCondition === true) {
+          this.searchProductName = this.searchText
+          this.searchProductIntroduction = ''
+        } else {
+          this.searchProductIntroduction = this.searchText
+          this.searchProductName = ''
+        }
+
+        axios
+          .get('/product/search', {
+            params: {
+              page: this.page,
+              size: this.size,
+              name: this.searchProductName,
+              introduction: this.searchProductIntroduction,
+              type: this.currentProductTypeId
+            }
+          })
+          .then(response => {
+            if (response.data.code === 0) {
+              this.products = response.data.data
+            } else {
+              this.message = response.data.message
+            }
+          })
+          .catch(error => console.log(error))
+      },
+      checkOneProduct (productId) {
+        // 选中一个产品
+        let idIndex = this.deleteProducts.indexOf(productId)
+        if (idIndex >= 0) {
+          // 如果已经选中，则将这个产品从已选中数组中去除
+          this.deleteProducts.splice(idIndex, 1)
+        } else {
+          // 选中该产品
+          this.deleteProducts.push(productId)
+          // 如果选中该产品后所有产品都被选中，则更新全选状态
+          if (this.deleteProducts.length === this.products.content.length) {
+            this.isCheckedAll = true
+          }
+        }
+      },
+      checkAllProducts () {
+        // 选中所有产品
+        this.isCheckedAll = !this.isCheckedAll
+        this.deleteProducts = []
+
+        if (this.isCheckedAll === true) {
+          // 全选，把本页所有产品全部加入已选列表
+          this.products.content.forEach(product => this.deleteProducts.push(product.id), this)
+        }
+      },
+      deleteProduct () {
+        axios
+          .post('/product/delete', this.deleteProducts)
+          .then(response => {
+            if (response.data.code === 0) {
+              alert('删除产品成功')
+              location.reload()
+            } else {
+              alert(response.data.message)
+            }
+          })
+          .catch(error => console.log(error))
+      },
+      loadProducts () {
+        if (this.searchProductName !== '' || this.searchProductIntroduction !== '') {
+          this.searchProduct()
+        } else {
+          // 加载产品列表
+          axios.get('/product/list', {
+            params: {
+              page: this.page,
+              size: this.size,
+              type: this.currentProductTypeId
+            }
+          })
+            .then(response => {
+              if (response.data.code === 0) {
+                this.products = response.data.data
+              } else {
+                this.message = response.data.message
+              }
+            })
+            .catch(error => console.log(error))
+        }
+      },
+      previousPage () {
+        this.page--
+        this.loadProducts()
+      },
+      nextPage () {
+        this.page++
+        this.loadProducts()
       }
     }
   })
