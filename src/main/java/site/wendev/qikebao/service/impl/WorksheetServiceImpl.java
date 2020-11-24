@@ -62,7 +62,7 @@ public class WorksheetServiceImpl extends ServiceImpl<WorksheetMapper, Worksheet
         return save(vo.build());
     }
 
-    private Integer countByQueryWrapper(QueryWrapper qw) {
+    private Integer countByQueryWrapper(QueryWrapper<Worksheet> qw) {
         return count(qw);
     }
 

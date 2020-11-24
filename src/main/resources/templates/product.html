@@ -6,9 +6,9 @@
 <body class="app-product" style="padding-right: 0px;">
 <div id="app">
     <div class="page narrow">
-        <div th:replace="_fragments :: aside"></div>
+        <div th:replace="_fragments :: aside('product')"></div>
         <div class="page-main">
-            <div th:replace="_fragments :: navbar"></div>
+            <div th:replace="_fragments :: navbar('产品信息')"></div>
             <div class="page-main-container flex-container">
                 <div class="page-main-aside">
                     <div class="page-aside-inner">
@@ -204,7 +204,7 @@
                                     <th class="cell-60 text-center idx">
                                         <div class="checkbox-custom checkbox-primary">
                                             <input type="checkbox" name="item-all-checkbox" @click="checkAllProducts"
-                                                   :checked="deleteProducts.length === products.content.length">
+                                                   :checked="deleteProducts.length === products.content.length && products.content.length !== 0">
                                             <label></label>
                                         </div>
                                     </th>
@@ -274,6 +274,13 @@
                             </table>
                         </div>
 
+                        <div class="pagination" v-if="products.content.length !== 0">
+                            <div class="page-bottom" id="item-pageNavi">
+                                <span>第{{ products.page }}页，共{{ products.totalPages }}页，共{{ products.total }}条记录</span>
+                                <a v-if="products.page !== 1" @click="previousPage">上一页</a>
+                                <a v-if="products.page !== products.totalPages" @click="nextPage">下一页</a>
+                            </div>
+                        </div>
                         <div>
                             <div class="pull-right">
       <span class="dropup" id="product-dropdown-menu-pageSize" style="display: none;">
@@ -628,6 +635,7 @@
           .then(response => {
             if (response.data.code === 0) {
               this.products = response.data.data
+              console.log(this.products.total)
             } else {
               this.message = response.data.message
             }

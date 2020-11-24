@@ -6,9 +6,9 @@
 <body class="app-worksheet">
 <div id="app">
     <div class="page narrow">
-        <div th:replace="_fragments :: aside"></div>
+        <div th:replace="_fragments :: aside('worksheet')"></div>
         <div class="page-main">
-            <div th:replace="_fragments :: navbar"></div>
+            <div th:replace="_fragments :: navbar('工单一览')"></div>
             <div class="page-main-container flex-container">
                 <div class="page-main-aside">
                     <section class="page-aside-section">
@@ -108,7 +108,7 @@
                         </table>
                     </div>
 
-                    <div class="pagination">
+                    <div class="pagination" v-if="worksheets.content.length !== 0">
                         <div class="page-bottom" id="item-pageNavi">
                             <span>第{{ worksheets.page }}页，共{{ worksheets.totalPages }}页，共{{ worksheets.total }}条记录</span>
                             <a v-if="worksheets.page !== 1" @click="previousPage">上一页</a>

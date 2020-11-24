@@ -36,7 +36,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         QueryWrapper<Product> qw = new QueryWrapper<>();
         qw.eq("type", vo.getType());
         PageResponse<Product> pageResponse = new PageResponse<Product>().setPageAndSize(vo);
-        pageResponse.setTotal(countProducts());
+        pageResponse.setTotal(countByQueryWrapper(qw));
         pageResponse.setContent(
                 mapper.selectPage(new Page<>(vo.getPage(), vo.getSize()), qw).getRecords());
 
@@ -63,7 +63,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         return pageResponse;
     }
 
-    private Integer countByQueryWrapper(QueryWrapper qw) {
+    private Integer countByQueryWrapper(QueryWrapper<Product> qw) {
         return count(qw);
     }
 

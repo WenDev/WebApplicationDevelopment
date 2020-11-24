@@ -103,7 +103,7 @@
     </style>
 </head>
 <body>
-<div class="aside" th:fragment="aside">
+<div class="aside" th:fragment="aside(active)">
     <div class="aside-header">
         <a href="#"><img class="brand-img" src="images/logo-72.png"></a>
     </div>
@@ -113,7 +113,7 @@
                 <div class="asScrollable-content" style="width: 70px;">
                     <ul class="aside-navi">
                         <li>
-                            <a id="aside-navi-workbench" href="/workbench" data-tooltip="tooltip"
+                            <a th:classappend="${active == 'workbench' ? 'selected' : ''}" id="aside-navi-workbench" href="/workbench" data-tooltip="tooltip"
                                data-placement="right" data-container="body" data-original-title="工作台">
                                 <i class="iconfont icon-workbench"></i> <span>工作台</span></a>
                         </li>
@@ -161,7 +161,8 @@
                                 <i class="iconfont icon-note2"></i> <span>跟进记录</span></a>
                         </li>
                         <li>
-                            <a class="selected" id="aside-navi-worksheet" href="/worksheet"
+                            <a th:classappend="${active == 'worksheet' ? 'selected' : ''}" id="aside-navi-worksheet"
+                               href="/worksheet"
                                data-tooltip="tooltip" data-placement="right" data-container="body"
                                data-original-title="工单">
                                 <i class="iconfont icon-worksheet"></i> <span>工单</span></a>
@@ -172,7 +173,8 @@
                                 <i class="iconfont icon-workReport"></i> <span>工作汇报</span></a>
                         </li>
                         <li>
-                            <a id="aside-navi-product" href="/product" data-tooltip="tooltip"
+                            <a th:classappend="${active == 'product' ? 'selected' : ''}" id="aside-navi-product"
+                               href="/product" data-tooltip="tooltip"
                                data-placement="right" data-container="body" data-original-title="产品">
                                 <i class="iconfont icon-product"></i> <span>产品</span></a>
                         </li>
@@ -196,13 +198,13 @@
     </div>
 </div>
 
-<div class="page-main-header" th:fragment="navbar">
+<div class="page-main-header" th:fragment="navbar(title)">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="narrow"><a href="#" id="navi-narrow-link" data-narrow="1"><i
                     class="iconfont"></i></a>
             </div>
-            <div class="navbar-header">工单一览</div>
+            <div class="navbar-header" th:text="${title}"></div>
             <div class="collapse navbar-collapse navbar-collapse-toolbar">
                 <div class="navbar-search">
                     <form>
