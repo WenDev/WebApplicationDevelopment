@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import site.wendev.qikebao.entities.ProductType;
 import site.wendev.qikebao.mapper.ProductTypeMapper;
 import site.wendev.qikebao.service.ProductTypeService;
+import site.wendev.qikebao.vo.AddProductTypeVO;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -44,5 +45,10 @@ public class ProductTypeServiceImpl extends ServiceImpl<ProductTypeMapper, Produ
         }
 
         return tree;
+    }
+
+    @Override
+    public boolean addProductType(AddProductTypeVO vo) {
+        return save(vo.build());
     }
 }

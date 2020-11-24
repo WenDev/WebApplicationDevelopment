@@ -2,6 +2,7 @@ package site.wendev.qikebao.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import site.wendev.qikebao.entities.ProductType;
+import site.wendev.qikebao.vo.AddProductTypeVO;
 
 import java.util.List;
 
@@ -13,4 +14,5 @@ import java.util.List;
  */
 public interface ProductTypeService extends IService<ProductType> {
     List<ProductType> listProductTypes();
+    boolean addProductType(AddProductTypeVO vo);
 }
