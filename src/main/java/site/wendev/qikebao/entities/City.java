@@ -12,8 +12,10 @@ import java.math.BigInteger;
  *
  * @author 江文
  * @since 2020/11/4 7:42 下午
+ * @deprecated 取消了客户系统的开发，本类不再使用
  */
 @Data
+@Deprecated
 @Accessors(chain = true)
 @TableName("city")
 @EqualsAndHashCode(callSuper = true)

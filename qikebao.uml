@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>site.wendev.qikebao</OriginalElement>
+  <nodes>
+    <node x="786.2068024850464" y="127.0">site.wendev.qikebao.vo.BasePageVO</node>
+    <node x="770.5738065634487" y="748.0">site.wendev.qikebao.controller.WorksheetController</node>
+    <node x="1354.1571398967817" y="748.0">site.wendev.qikebao.service.impl.ProductServiceImpl</node>
+    <node x="5824.527437405681" y="748.0">site.wendev.qikebao.service.impl.CustomerServiceImpl</node>
+    <node x="2091.6265873015864" y="244.0">site.wendev.qikebao.vo.AddProductTypeVO</node>
+    <node x="1901.3238065634482" y="748.0">site.wendev.qikebao.controller.ProductController</node>
+    <node x="3379.035770739015" y="748.0">site.wendev.qikebao.controller.CustomerController</node>
+    <node x="171.2976190476188" y="244.0">site.wendev.qikebao.vo.AddWorksheetVO</node>
+    <node x="2475.242787815453" y="127.0">site.wendev.qikebao.entities.ProductType</node>
+    <node x="3878.7026092440246" y="431.0">site.wendev.qikebao.vo.FileUploadResponseVO</node>
+    <node x="1894.6857707390145" y="127.0">site.wendev.qikebao.vo.BaseVO</node>
+    <node x="4301.876587301586" y="431.0">site.wendev.qikebao.aop.ControllerExceptionAop</node>
+    <node x="1806.676587301587" y="244.0">site.wendev.qikebao.vo.AddProductVO</node>
+    <node x="3257.171187405681" y="431.0">site.wendev.qikebao.utils.ResponseUtil</node>
+    <node x="7034.015473230115" y="431.0">site.wendev.qikebao.service.impl.TypeServiceImpl</node>
+    <node x="400.2976190476188" y="244.0">site.wendev.qikebao.vo.ListWorksheetVO</node>
+    <node x="3949.035770739015" y="748.0">site.wendev.qikebao.controller.FileUploadController</node>
+    <node x="6300.1526092440245" y="0.0">site.wendev.qikebao.entities.BaseEntity</node>
+    <node x="8247.860770739015" y="431.0">site.wendev.qikebao.service.impl.CityServiceImpl</node>
+    <node x="1740.9357707390145" y="127.0">site.wendev.qikebao.entities.Product</node>
+    <node x="2314.8904732301153" y="748.0">site.wendev.qikebao.controller.ProductTypeController</node>
+    <node x="1137.176587301587" y="244.0">site.wendev.qikebao.vo.ListProductVO</node>
+    <node x="6642.015473230115" y="431.0">site.wendev.qikebao.service.impl.LabelServiceImpl</node>
+    <node x="7444.515473230115" y="431.0">site.wendev.qikebao.service.impl.ProvinceServiceImpl</node>
+    <node x="4476.807311735125" y="244.0">site.wendev.qikebao.vo.LoginVO</node>
+    <node x="862.0" y="830.0">site.wendev.qikebao.controller.CommonController</node>
+    <node x="2428.6265873015864" y="431.0">site.wendev.qikebao.service.ProductTypeService</node>
+    <node x="6310.735770739015" y="748.0">site.wendev.qikebao.service.impl.ImportanceServiceImpl</node>
+    <node x="10.5" y="431.0">site.wendev.qikebao.mapper.WorksheetMapper</node>
+    <node x="2779.3765873015864" y="431.0">site.wendev.qikebao.mapper.ProductTypeMapper</node>
+    <node x="7530.265473230115" y="244.0">site.wendev.qikebao.mapper.ProvinceMapper</node>
+    <node x="1354.176587301587" y="244.0">site.wendev.qikebao.vo.SearchProductVO</node>
+    <node x="8431.90992063492" y="127.0">site.wendev.qikebao.entities.City</node>
+    <node x="123.6734691517131" y="127.0">site.wendev.qikebao.entities.Worksheet</node>
+    <node x="7447.015473230115" y="127.0">site.wendev.qikebao.entities.Province</node>
+    <node x="2622.8904732301153" y="748.0">site.wendev.qikebao.service.impl.ProductTypeServiceImpl</node>
+    <node x="2342.6265873015864" y="244.0">site.wendev.qikebao.enums.ErrorEnum</node>
+    <node x="3538.504692577358" y="244.0">site.wendev.qikebao.common.Response</node>
+    <node x="6308.576587301586" y="431.0">site.wendev.qikebao.mapper.ImportanceMapper</node>
+    <node x="5123.076587301586" y="244.0">site.wendev.qikebao.utils.PasswordUtil</node>
+    <node x="7729.515473230115" y="431.0">site.wendev.qikebao.service.TemplateService</node>
+    <node x="7290.265473230115" y="244.0">site.wendev.qikebao.service.ProvinceService</node>
+    <node x="7945.152437405681" y="748.0">site.wendev.qikebao.service.impl.TemplateServiceImpl</node>
+    <node x="7108.265473230115" y="244.0">site.wendev.qikebao.mapper.TypeMapper</node>
+    <node x="7047.765473230115" y="127.0">site.wendev.qikebao.entities.Type</node>
+    <node x="8319.576587301586" y="244.0">site.wendev.qikebao.mapper.CityMapper</node>
+    <node x="330.8976190476187" y="431.0">site.wendev.qikebao.service.WorksheetService</node>
+    <node x="6281.140473230115" y="244.0">site.wendev.qikebao.entities.Importance</node>
+    <node x="5795.390473230115" y="244.0">site.wendev.qikebao.entities.Customer</node>
+    <node x="4620.876587301586" y="431.0">site.wendev.qikebao.controller.LoginController</node>
+    <node x="4941.076587301586" y="244.0">site.wendev.qikebao.mapper.UserMapper</node>
+    <node x="6719.265473230115" y="244.0">site.wendev.qikebao.mapper.LabelMapper</node>
+    <node x="639.2976190476188" y="244.0">site.wendev.qikebao.vo.SearchWorksheetVO</node>
+    <node x="5817.576587301586" y="431.0">site.wendev.qikebao.mapper.CustomerMapper</node>
+    <node x="5328.076587301586" y="244.0">site.wendev.qikebao.configuration.AutoFillHandler</node>
+    <node x="4885.535770739014" y="127.0">site.wendev.qikebao.entities.User</node>
+    <node x="276.0" y="830.0">site.wendev.qikebao.QikebaoApplication</node>
+    <node x="8084.243253968252" y="244.0">site.wendev.qikebao.entities.Template</node>
+    <node x="3653.035770739015" y="748.0">site.wendev.qikebao.controller.ImportanceController</node>
+    <node x="342.7404732301152" y="748.0">site.wendev.qikebao.service.impl.WorksheetServiceImpl</node>
+    <node x="1359.676587301587" y="431.0">site.wendev.qikebao.service.ProductService</node>
+    <node x="5316.576587301586" y="431.0">site.wendev.qikebao.configuration.MyBatisPlusConfig</node>
+    <node x="5578.576587301586" y="431.0">site.wendev.qikebao.service.CustomerService</node>
+    <node x="8018.860770739014" y="431.0">site.wendev.qikebao.mapper.TemplateMapper</node>
+    <node x="3014.035770739015" y="748.0">site.wendev.qikebao.handler.ControllerExceptionHandler</node>
+    <node x="4245.035770739014" y="748.0">site.wendev.qikebao.controller.TemplateController</node>
+    <node x="4746.076587301586" y="244.0">site.wendev.qikebao.service.UserService</node>
+    <node x="23.0" y="917.0">site.wendev.qikebao.configuration.WebMvcConfig</node>
+    <node x="901.2976190476188" y="244.0">site.wendev.qikebao.vo.PageResponse</node>
+    <node x="575.0" y="830.0">site.wendev.qikebao.exception.BusinessException</node>
+    <node x="6913.265473230115" y="244.0">site.wendev.qikebao.service.TypeService</node>
+    <node x="4893.6526092440245" y="431.0">site.wendev.qikebao.service.impl.UserServiceImpl</node>
+    <node x="8501.576587301586" y="244.0">site.wendev.qikebao.service.CityService</node>
+    <node x="6615.057311735125" y="127.0">site.wendev.qikebao.entities.Label</node>
+    <node x="6463.140473230115" y="244.0">site.wendev.qikebao.service.LabelService</node>
+    <node x="0.0" y="830.0">site.wendev.qikebao.interceptor.LoginInterceptor</node>
+    <node x="6046.576587301586" y="431.0">site.wendev.qikebao.service.ImportanceService</node>
+    <node x="1588.676587301587" y="431.0">site.wendev.qikebao.mapper.ProductMapper</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="site.wendev.qikebao.service.TypeService" target="site.wendev.qikebao.entities.Type">
+      <point x="0.0" y="-18.5" />
+      <point x="7000.265473230115" y="224.0" />
+      <point x="7063.432139896781" y="224.0" />
+      <point x="-31.33333333333394" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.vo.AddWorksheetVO">
+      <point x="-113.57142857142844" y="-18.5" />
+      <point x="789.5023779920202" y="588.0" />
+      <point x="275.2976190476188" y="588.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.CityService" target="site.wendev.qikebao.entities.City">
+      <point x="0.0" y="-18.5" />
+      <point x="8588.576587301586" y="224.0" />
+      <point x="8510.243253968252" y="224.0" />
+      <point x="31.333333333333314" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.entities.ProductType">
+      <point x="54.0" y="-18.5" />
+      <point x="2512.8904732301153" y="668.0" />
+      <point x="2734.8765873015864" y="668.0" />
+      <point x="2734.8765873015864" y="214.0" />
+      <point x="2576.742787815453" y="214.0" />
+      <point x="14.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ImportanceServiceImpl" target="site.wendev.qikebao.entities.Importance">
+      <point x="96.0" y="-18.5" />
+      <point x="6550.076587301586" y="401.0" />
+      <point x="6416.140473230115" y="401.0" />
+      <point x="54.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.enums.ErrorEnum">
+      <point x="-18.0" y="-18.5" />
+      <point x="2440.8904732301153" y="668.0" />
+      <point x="2418.1265873015864" y="668.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.TypeMapper" target="site.wendev.qikebao.entities.Type">
+      <point x="0.0" y="-18.5" />
+      <point x="7189.265473230115" y="224.0" />
+      <point x="7126.098806563449" y="224.0" />
+      <point x="31.33333333333394" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.vo.ListWorksheetVO">
+      <point x="-37.85714285714312" y="-18.5" />
+      <point x="865.2166637063056" y="568.0" />
+      <point x="572.3976190476187" y="568.0" />
+      <point x="572.3976190476187" y="381.0" />
+      <point x="582.7976190476188" y="381.0" />
+      <point x="73.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductService" target="site.wendev.qikebao.vo.AddProductVO">
+      <point x="83.19999999999982" y="-18.5" />
+      <point x="1546.8765873015868" y="321.0" />
+      <point x="1837.5099206349205" y="321.0" />
+      <point x="-61.666666666666515" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.CityMapper" target="site.wendev.qikebao.entities.City">
+      <point x="0.0" y="-18.5" />
+      <point x="8400.576587301586" y="224.0" />
+      <point x="8478.90992063492" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.AddWorksheetVO" target="site.wendev.qikebao.vo.BaseVO">
+      <point x="69.33333333333326" y="-18.5" />
+      <point x="344.6309523809523" y="224.0" />
+      <point x="1914.1857707390145" y="224.0" />
+      <point x="-39.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.UserServiceImpl" target="site.wendev.qikebao.mapper.UserMapper">
+      <point x="0.0" y="-18.5" />
+      <point x="5003.1526092440245" y="411.0" />
+      <point x="4981.576587301586" y="411.0" />
+      <point x="-40.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.vo.SearchProductVO">
+      <point x="-28.22222222222217" y="-18.5" />
+      <point x="1452.9349176745595" y="588.0" />
+      <point x="1297.926587301587" y="588.0" />
+      <point x="1297.926587301587" y="411.0" />
+      <point x="1390.676587301587" y="411.0" />
+      <point x="-73.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.ListWorksheetVO" target="site.wendev.qikebao.vo.BasePageVO">
+      <point x="0.0" y="-18.5" />
+      <point x="509.7976190476188" y="204.0" />
+      <point x="802.4068024850467" y="204.0" />
+      <point x="-64.79999999999995" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.TemplateController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="-84.66666666666697" y="-18.5" />
+      <point x="4287.369104072348" y="678.0" />
+      <point x="3430.608687405681" y="678.0" />
+      <point x="80.9375" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.LoginController" target="site.wendev.qikebao.service.UserService">
+      <point x="73.0" y="-18.5" />
+      <point x="4803.376587301586" y="411.0" />
+      <point x="4789.576587301586" y="411.0" />
+      <point x="-43.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.service.ProductTypeService">
+      <point x="18.0" y="-18.5" />
+      <point x="2476.8904732301153" y="668.0" />
+      <point x="2492.1265873015864" y="668.0" />
+      <point x="-63.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.AddWorksheetVO" target="site.wendev.qikebao.entities.Worksheet">
+      <point x="-69.33333333333326" y="-18.5" />
+      <point x="205.96428571428532" y="224.0" />
+      <point x="199.1734691517131" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.CustomerController" target="site.wendev.qikebao.service.CustomerService">
+      <point x="84.66666666666697" y="-18.5" />
+      <point x="3590.702437405682" y="708.0" />
+      <point x="5633.326587301586" y="708.0" />
+      <point x="-54.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.WorksheetMapper" target="site.wendev.qikebao.entities.Worksheet">
+      <point x="0.0" y="-18.5" />
+      <point x="120.0" y="224.0" />
+      <point x="168.9734691517133" y="224.0" />
+      <point x="-30.199999999999818" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProvinceServiceImpl" target="site.wendev.qikebao.entities.Province">
+      <point x="-66.25" y="-18.5" />
+      <point x="7510.765473230115" y="411.0" />
+      <point x="7519.765473230115" y="411.0" />
+      <point x="7519.765473230115" y="224.0" />
+      <point x="7517.015473230115" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ImportanceController" target="site.wendev.qikebao.common.Response">
+      <point x="0.0" y="-18.5" />
+      <point x="3791.035770739015" y="411.0" />
+      <point x="3633.959238031903" y="411.0" />
+      <point x="25.45454545454504" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.configuration.WebMvcConfig" target="site.wendev.qikebao.interceptor.LoginInterceptor">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.TemplateController" target="site.wendev.qikebao.service.TemplateService">
+      <point x="84.66666666666697" y="-18.5" />
+      <point x="4456.702437405682" y="728.0" />
+      <point x="7784.265473230115" y="728.0" />
+      <point x="-54.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.handler.ControllerExceptionHandler" target="site.wendev.qikebao.common.Response">
+      <point x="0.0" y="-18.5" />
+      <point x="3186.535770739015" y="688.0" />
+      <point x="3145.535770739015" y="688.0" />
+      <point x="3145.535770739015" y="381.0" />
+      <point x="3583.050147122813" y="381.0" />
+      <point x="-25.45454545454504" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Importance" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="6362.140473230115" y="107.0" />
+      <point x="6381.1526092440245" y="107.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.entities.Worksheet">
+      <point x="-122.66666666666652" y="-18.5" />
+      <point x="358.07380656344867" y="728.0" />
+      <point x="0.0" y="728.0" />
+      <point x="0.0" y="214.0" />
+      <point x="138.77346915171302" y="214.0" />
+      <point x="-60.40000000000009" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.UserServiceImpl" target="site.wendev.qikebao.utils.PasswordUtil">
+      <point x="87.60000000000036" y="-18.5" />
+      <point x="5090.752609244025" y="411.0" />
+      <point x="5215.576587301586" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.enums.ErrorEnum">
+      <point x="37.85714285714312" y="-18.5" />
+      <point x="940.9309494205918" y="628.0" />
+      <point x="1578.176587301587" y="628.0" />
+      <point x="1578.176587301587" y="331.0" />
+      <point x="2357.7265873015863" y="331.0" />
+      <point x="-60.40000000000009" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="103.71428571428578" y="-18.5" />
+      <point x="2126.038092277734" y="708.0" />
+      <point x="3291.858687405681" y="708.0" />
+      <point x="-57.8125" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductTypeService" target="site.wendev.qikebao.vo.AddProductTypeVO">
+      <point x="-63.5" y="-18.5" />
+      <point x="2492.1265873015864" y="321.0" />
+      <point x="2284.1265873015864" y="321.0" />
+      <point x="77.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.configuration.MyBatisPlusConfig" target="site.wendev.qikebao.configuration.AutoFillHandler">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.vo.AddProductVO">
+      <point x="0.0" y="-18.5" />
+      <point x="2022.3238065634482" y="538.0" />
+      <point x="1935.50992063492" y="538.0" />
+      <point x="1935.50992063492" y="321.0" />
+      <point x="1960.8432539682535" y="321.0" />
+      <point x="61.666666666666515" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.CustomerController" target="site.wendev.qikebao.common.Response">
+      <point x="0.0" y="-18.5" />
+      <point x="3506.035770739015" y="728.0" />
+      <point x="3509.421187405681" y="728.0" />
+      <point x="3509.421187405681" y="411.0" />
+      <point x="3621.231965304631" y="411.0" />
+      <point x="12.727272727272975" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.WorksheetService" target="site.wendev.qikebao.entities.Worksheet">
+      <point x="-46.19999999999982" y="-18.5" />
+      <point x="400.1976190476189" y="401.0" />
+      <point x="389.7976190476188" y="401.0" />
+      <point x="389.7976190476188" y="214.0" />
+      <point x="259.5734691517132" y="214.0" />
+      <point x="60.40000000000009" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ImportanceServiceImpl" target="site.wendev.qikebao.service.ImportanceService">
+      <point x="-96.0" y="-18.5" />
+      <point x="6358.735770739015" y="718.0" />
+      <point x="6228.076587301586" y="718.0" />
+      <point x="60.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.LabelServiceImpl" target="site.wendev.qikebao.entities.Label">
+      <point x="-57.75" y="-18.5" />
+      <point x="6699.765473230115" y="411.0" />
+      <point x="6708.765473230115" y="411.0" />
+      <point x="6708.765473230115" y="224.0" />
+      <point x="6667.557311735125" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.UserMapper" target="site.wendev.qikebao.entities.User">
+      <point x="0.0" y="-18.5" />
+      <point x="5022.076587301586" y="224.0" />
+      <point x="4951.335770739015" y="224.0" />
+      <point x="18.800000000000182" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductTypeServiceImpl" target="site.wendev.qikebao.entities.ProductType">
+      <point x="0.0" y="-18.5" />
+      <point x="2772.3904732301153" y="668.0" />
+      <point x="2745.8765873015864" y="668.0" />
+      <point x="2745.8765873015864" y="204.0" />
+      <point x="2605.742787815453" y="204.0" />
+      <point x="43.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.vo.SearchProductVO">
+      <point x="-34.57142857142844" y="-18.5" />
+      <point x="1987.7523779920198" y="548.0" />
+      <point x="1873.00992063492" y="548.0" />
+      <point x="1873.00992063492" y="301.0" />
+      <point x="1536.676587301587" y="301.0" />
+      <point x="73.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.LoginController" target="site.wendev.qikebao.vo.LoginVO">
+      <point x="-73.0" y="-18.5" />
+      <point x="4657.376587301586" y="411.0" />
+      <point x="4540.807311735125" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.mapper.ProductMapper">
+      <point x="28.22222222222217" y="-18.5" />
+      <point x="1509.3793621190039" y="638.0" />
+      <point x="1637.926587301587" y="638.0" />
+      <point x="-49.25" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.AddProductTypeVO" target="site.wendev.qikebao.vo.BaseVO">
+      <point x="-77.0" y="-18.5" />
+      <point x="2130.1265873015864" y="184.0" />
+      <point x="1992.1857707390145" y="184.0" />
+      <point x="39.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.TemplateServiceImpl" target="site.wendev.qikebao.mapper.TemplateMapper">
+      <point x="0.0" y="-18.5" />
+      <point x="8077.652437405681" y="728.0" />
+      <point x="8122.860770739014" y="728.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductTypeServiceImpl" target="site.wendev.qikebao.vo.AddProductTypeVO">
+      <point x="-119.60000000000036" y="-18.5" />
+      <point x="2652.790473230115" y="498.0" />
+      <point x="2207.1265873015864" y="498.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.vo.SearchWorksheetVO">
+      <point x="0.0" y="-18.5" />
+      <point x="903.0738065634487" y="558.0" />
+      <point x="806.1309523809523" y="558.0" />
+      <point x="806.1309523809523" y="391.0" />
+      <point x="840.9642857142853" y="391.0" />
+      <point x="80.66666666666652" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.utils.ResponseUtil" target="site.wendev.qikebao.common.Response">
+      <point x="0.0" y="-18.5" />
+      <point x="3349.671187405681" y="391.0" />
+      <point x="3595.777419850085" y="391.0" />
+      <point x="-12.727272727272975" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Product" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="1804.9357707390145" y="67.0" />
+      <point x="6322.2435183349335" y="67.0" />
+      <point x="-58.90909090909099" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.common.Response">
+      <point x="90.0" y="-18.5" />
+      <point x="2548.8904732301153" y="688.0" />
+      <point x="3053.8765873015864" y="688.0" />
+      <point x="3053.8765873015864" y="371.0" />
+      <point x="3570.32287439554" y="371.0" />
+      <point x="-38.18181818181802" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.WorksheetService" target="site.wendev.qikebao.vo.ListWorksheetVO">
+      <point x="0.0" y="-18.5" />
+      <point x="446.3976190476187" y="381.0" />
+      <point x="509.7976190476188" y="381.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.vo.ListWorksheetVO">
+      <point x="0.0" y="-18.5" />
+      <point x="480.7404732301152" y="688.0" />
+      <point x="308.5476190476188" y="688.0" />
+      <point x="308.5476190476188" y="411.0" />
+      <point x="436.7976190476188" y="411.0" />
+      <point x="-73.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.SearchWorksheetVO" target="site.wendev.qikebao.vo.BasePageVO">
+      <point x="0.0" y="-18.5" />
+      <point x="760.2976190476188" y="214.0" />
+      <point x="834.8068024850463" y="214.0" />
+      <point x="-32.40000000000009" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Customer" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="5865.390473230115" y="97.0" />
+      <point x="6366.4253365167515" y="97.0" />
+      <point x="-14.727272727272975" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Template" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="8154.243253968252" y="77.0" />
+      <point x="6440.061700153115" y="77.0" />
+      <point x="58.90909090909099" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductService" target="site.wendev.qikebao.vo.SearchProductVO">
+      <point x="0.0" y="-18.5" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.ProvinceMapper" target="site.wendev.qikebao.entities.Province">
+      <point x="0.0" y="-18.5" />
+      <point x="7634.265473230115" y="224.0" />
+      <point x="7563.682139896782" y="224.0" />
+      <point x="46.66666666666663" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.ImportanceMapper" target="site.wendev.qikebao.entities.Importance">
+      <point x="0.0" y="-18.5" />
+      <point x="6424.076587301586" y="411.0" />
+      <point x="6362.140473230115" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.User" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="4932.535770739014" y="87.0" />
+      <point x="6351.698063789479" y="87.0" />
+      <point x="-29.45454545454504" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="126.0" y="-18.5" />
+      <point x="2584.8904732301153" y="718.0" />
+      <point x="3314.983687405681" y="718.0" />
+      <point x="-34.6875" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.service.ProductService">
+      <point x="0.0" y="-18.5" />
+      <point x="1481.1571398967817" y="578.0" />
+      <point x="1394.3432539682535" y="578.0" />
+      <point x="-69.33333333333348" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ImportanceServiceImpl" target="site.wendev.qikebao.mapper.ImportanceMapper">
+      <point x="0.0" y="-18.5" />
+      <point x="6454.735770739015" y="718.0" />
+      <point x="6424.076587301586" y="718.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.TemplateServiceImpl" target="site.wendev.qikebao.service.TemplateService">
+      <point x="-88.33333333333303" y="-18.5" />
+      <point x="7989.319104072348" y="728.0" />
+      <point x="7893.765473230115" y="728.0" />
+      <point x="54.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ImportanceController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="-92.0" y="-18.5" />
+      <point x="3699.035770739015" y="698.0" />
+      <point x="3384.358687405681" y="698.0" />
+      <point x="34.6875" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.service.WorksheetService">
+      <point x="30.666666666666742" y="-18.5" />
+      <point x="511.4071398967817" y="678.0" />
+      <point x="388.6476190476187" y="678.0" />
+      <point x="-57.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.enums.ErrorEnum">
+      <point x="34.57142857142844" y="-18.5" />
+      <point x="2056.8952351348767" y="688.0" />
+      <point x="2076.1765873015866" y="688.0" />
+      <point x="2076.1765873015866" y="341.0" />
+      <point x="2387.9265873015866" y="341.0" />
+      <point x="-30.199999999999818" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.utils.ResponseUtil" target="site.wendev.qikebao.enums.ErrorEnum">
+      <point x="-61.666666666666515" y="-18.5" />
+      <point x="3288.004520739015" y="301.0" />
+      <point x="2478.5265873015865" y="301.0" />
+      <point x="60.40000000000009" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.service.ProductService">
+      <point x="-69.14285714285734" y="-18.5" />
+      <point x="1953.1809494205909" y="558.0" />
+      <point x="1463.676587301587" y="558.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProvinceService" target="site.wendev.qikebao.entities.Province">
+      <point x="0.0" y="-18.5" />
+      <point x="7399.765473230115" y="224.0" />
+      <point x="7470.348806563448" y="224.0" />
+      <point x="-46.66666666666663" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.vo.PageResponse">
+      <point x="-84.66666666666652" y="-18.5" />
+      <point x="1396.4904732301152" y="608.0" />
+      <point x="1020.2142857142853" y="608.0" />
+      <point x="1020.2142857142853" y="411.0" />
+      <point x="1040.0476190476188" y="411.0" />
+      <point x="46.25" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Type" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="7094.765473230115" y="97.0" />
+      <point x="6410.6071546985695" y="97.0" />
+      <point x="29.45454545454504" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.FileUploadController" target="site.wendev.qikebao.vo.FileUploadResponseVO">
+      <point x="0.0" y="-18.5" />
+      <point x="4087.035770739015" y="698.0" />
+      <point x="4016.7026092440246" y="698.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.UserService" target="site.wendev.qikebao.entities.User">
+      <point x="0.0" y="-18.5" />
+      <point x="4833.076587301586" y="224.0" />
+      <point x="4913.735770739015" y="224.0" />
+      <point x="-18.800000000000182" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Worksheet" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="199.1734691517131" y="57.0" />
+      <point x="6307.5162456076605" y="57.0" />
+      <point x="-73.63636363636397" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.AddProductVO" target="site.wendev.qikebao.entities.Product">
+      <point x="-61.666666666666515" y="-18.5" />
+      <point x="1837.5099206349205" y="214.0" />
+      <point x="1815.602437405681" y="214.0" />
+      <point x="10.666666666666515" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.City" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="8478.90992063492" y="67.0" />
+      <point x="6454.788972880388" y="67.0" />
+      <point x="73.63636363636397" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.handler.ControllerExceptionHandler" target="site.wendev.qikebao.enums.ErrorEnum">
+      <point x="-115.0" y="-18.5" />
+      <point x="3071.535770739015" y="668.0" />
+      <point x="3031.8765873015864" y="668.0" />
+      <point x="3031.8765873015864" y="311.0" />
+      <point x="2448.326587301586" y="311.0" />
+      <point x="30.199999999999818" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.WorksheetService" target="site.wendev.qikebao.vo.SearchWorksheetVO">
+      <point x="46.200000000000045" y="-18.5" />
+      <point x="492.59761904761854" y="391.0" />
+      <point x="679.6309523809523" y="391.0" />
+      <point x="-80.66666666666674" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.vo.SearchWorksheetVO">
+      <point x="61.333333333333485" y="-18.5" />
+      <point x="542.0738065634487" y="598.0" />
+      <point x="795.1309523809523" y="598.0" />
+      <point x="795.1309523809523" y="391.0" />
+      <point x="760.2976190476188" y="391.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.ProductType" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="2562.242787815453" y="77.0" />
+      <point x="6336.970791062206" y="77.0" />
+      <point x="-44.18181818181802" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.mapper.WorksheetMapper">
+      <point x="-92.0" y="-18.5" />
+      <point x="388.7404732301152" y="718.0" />
+      <point x="65.25" y="718.0" />
+      <point x="-54.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.vo.ListProductVO">
+      <point x="-56.44444444444434" y="-18.5" />
+      <point x="1424.7126954523374" y="598.0" />
+      <point x="1102.5892857142853" y="598.0" />
+      <point x="1102.5892857142853" y="411.0" />
+      <point x="1170.0099206349205" y="411.0" />
+      <point x="-65.66666666666652" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.TemplateServiceImpl" target="site.wendev.qikebao.entities.Template">
+      <point x="88.33333333333303" y="-18.5" />
+      <point x="8165.985770739014" y="728.0" />
+      <point x="8237.360770739015" y="728.0" />
+      <point x="8237.360770739015" y="411.0" />
+      <point x="8200.90992063492" y="411.0" />
+      <point x="46.66666666666697" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.TemplateMapper" target="site.wendev.qikebao.entities.Template">
+      <point x="0.0" y="-18.5" />
+      <point x="8122.860770739014" y="411.0" />
+      <point x="8154.243253968252" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.CustomerServiceImpl" target="site.wendev.qikebao.entities.Customer">
+      <point x="88.33333333333303" y="-18.5" />
+      <point x="6045.360770739014" y="708.0" />
+      <point x="6036.076587301586" y="708.0" />
+      <point x="6036.076587301586" y="401.0" />
+      <point x="5912.057139896782" y="401.0" />
+      <point x="46.66666666666697" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.entities.Product">
+      <point x="84.66666666666652" y="-18.5" />
+      <point x="1565.8238065634482" y="658.0" />
+      <point x="1796.176587301587" y="658.0" />
+      <point x="1796.176587301587" y="214.0" />
+      <point x="1794.269104072348" y="214.0" />
+      <point x="-10.666666666666515" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.AddProductVO" target="site.wendev.qikebao.vo.BaseVO">
+      <point x="61.666666666666515" y="-18.5" />
+      <point x="1960.8432539682535" y="224.0" />
+      <point x="1953.1857707390145" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.CustomerServiceImpl" target="site.wendev.qikebao.service.CustomerService">
+      <point x="-88.33333333333303" y="-18.5" />
+      <point x="5868.694104072348" y="708.0" />
+      <point x="5742.826587301586" y="708.0" />
+      <point x="54.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.vo.AddProductTypeVO">
+      <point x="-54.0" y="-18.5" />
+      <point x="2404.8904732301153" y="508.0" />
+      <point x="2054.1765873015866" y="508.0" />
+      <point x="2054.1765873015866" y="321.0" />
+      <point x="2130.1265873015864" y="321.0" />
+      <point x="-77.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.TemplateController" target="site.wendev.qikebao.common.Response">
+      <point x="0.0" y="-18.5" />
+      <point x="4372.035770739014" y="668.0" />
+      <point x="4291.376587301586" y="668.0" />
+      <point x="4291.376587301586" y="391.0" />
+      <point x="3659.413783486449" y="391.0" />
+      <point x="50.90909090909099" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.entities.Product">
+      <point x="-90.0" y="-18.5" />
+      <point x="2368.8904732301153" y="518.0" />
+      <point x="2002.176587301587" y="518.0" />
+      <point x="2002.176587301587" y="194.0" />
+      <point x="1858.269104072348" y="194.0" />
+      <point x="53.333333333333485" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.LabelMapper" target="site.wendev.qikebao.entities.Label">
+      <point x="0.0" y="-18.5" />
+      <point x="6806.265473230115" y="214.0" />
+      <point x="6702.557311735125" y="214.0" />
+      <point x="35.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ImportanceService" target="site.wendev.qikebao.entities.Importance">
+      <point x="0.0" y="-18.5" />
+      <point x="6167.576587301586" y="411.0" />
+      <point x="6308.140473230115" y="411.0" />
+      <point x="-54.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductService" target="site.wendev.qikebao.vo.PageResponse">
+      <point x="-83.19999999999982" y="-18.5" />
+      <point x="1380.4765873015872" y="401.0" />
+      <point x="1070.8809523809523" y="401.0" />
+      <point x="77.08333333333348" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.handler.ControllerExceptionHandler" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="115.0" y="-18.5" />
+      <point x="3301.535770739015" y="728.0" />
+      <point x="3338.108687405681" y="728.0" />
+      <point x="-11.5625" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.FileUploadController" target="site.wendev.qikebao.common.Response">
+      <point x="92.0" y="-18.5" />
+      <point x="4179.035770739015" y="698.0" />
+      <point x="4217.626587301586" y="698.0" />
+      <point x="4217.626587301586" y="401.0" />
+      <point x="3646.686510759176" y="401.0" />
+      <point x="38.18181818181802" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.SearchProductVO" target="site.wendev.qikebao.vo.BasePageVO">
+      <point x="0.0" y="-18.5" />
+      <point x="1463.676587301587" y="194.0" />
+      <point x="932.0068024850461" y="194.0" />
+      <point x="64.79999999999995" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.WorksheetService" target="site.wendev.qikebao.vo.AddWorksheetVO">
+      <point x="-92.40000000000009" y="-18.5" />
+      <point x="353.9976190476186" y="401.0" />
+      <point x="344.6309523809523" y="401.0" />
+      <point x="69.33333333333326" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.configuration.AutoFillHandler" target="site.wendev.qikebao.entities.User">
+      <point x="0.0" y="-18.5" />
+      <point x="5437.576587301586" y="214.0" />
+      <point x="4970.135770739014" y="214.0" />
+      <point x="37.600000000000364" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.common.Response">
+      <point x="75.71428571428578" y="-18.5" />
+      <point x="978.7880922777344" y="678.0" />
+      <point x="2065.1765873015866" y="678.0" />
+      <point x="2065.1765873015866" y="351.0" />
+      <point x="3544.868328940994" y="351.0" />
+      <point x="-63.63636363636397" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Province" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="7517.015473230115" y="87.0" />
+      <point x="6425.3344274258425" y="87.0" />
+      <point x="44.18181818181802" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.LabelService" target="site.wendev.qikebao.entities.Label">
+      <point x="0.0" y="-18.5" />
+      <point x="6555.640473230115" y="224.0" />
+      <point x="6632.557311735125" y="224.0" />
+      <point x="-35.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.CustomerMapper" target="site.wendev.qikebao.entities.Customer">
+      <point x="0.0" y="-18.5" />
+      <point x="5921.576587301586" y="411.0" />
+      <point x="5865.390473230115" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.AddProductTypeVO" target="site.wendev.qikebao.entities.ProductType">
+      <point x="0.0" y="-18.5" />
+      <point x="2207.1265873015864" y="214.0" />
+      <point x="2489.742787815453" y="214.0" />
+      <point x="-72.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.vo.ListProductVO">
+      <point x="-103.71428571428578" y="-18.5" />
+      <point x="1918.6095208491624" y="568.0" />
+      <point x="1235.676587301587" y="568.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.TypeServiceImpl" target="site.wendev.qikebao.entities.Type">
+      <point x="-54.75" y="-18.5" />
+      <point x="7088.765473230115" y="411.0" />
+      <point x="7097.765473230115" y="411.0" />
+      <point x="7097.765473230115" y="224.0" />
+      <point x="7094.765473230115" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.TypeServiceImpl" target="site.wendev.qikebao.mapper.TypeMapper">
+      <point x="54.75" y="-18.5" />
+      <point x="7198.265473230115" y="411.0" />
+      <point x="7189.265473230115" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.CustomerServiceImpl" target="site.wendev.qikebao.mapper.CustomerMapper">
+      <point x="0.0" y="-18.5" />
+      <point x="5957.027437405681" y="708.0" />
+      <point x="5921.576587301586" y="708.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductTypeServiceImpl" target="site.wendev.qikebao.mapper.ProductTypeMapper">
+      <point x="59.80000000000018" y="-18.5" />
+      <point x="2832.1904732301155" y="668.0" />
+      <point x="2839.8765873015864" y="668.0" />
+      <point x="-60.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.UserServiceImpl" target="site.wendev.qikebao.service.UserService">
+      <point x="-87.60000000000036" y="-18.5" />
+      <point x="4915.552609244024" y="411.0" />
+      <point x="4876.576587301586" y="411.0" />
+      <point x="43.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProvinceServiceImpl" target="site.wendev.qikebao.mapper.ProvinceMapper">
+      <point x="66.25" y="-18.5" />
+      <point x="7643.265473230115" y="411.0" />
+      <point x="7634.265473230115" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.service.WorksheetService">
+      <point x="-75.71428571428578" y="-18.5" />
+      <point x="827.3595208491629" y="578.0" />
+      <point x="504.1476190476187" y="578.0" />
+      <point x="57.75" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.CustomerController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="-84.66666666666697" y="-18.5" />
+      <point x="3421.369104072348" y="728.0" />
+      <point x="3361.233687405681" y="728.0" />
+      <point x="11.5625" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.vo.AddWorksheetVO">
+      <point x="-30.666666666666515" y="-18.5" />
+      <point x="450.07380656344867" y="698.0" />
+      <point x="240.0" y="698.0" />
+      <point x="240.0" y="411.0" />
+      <point x="205.96428571428532" y="411.0" />
+      <point x="-69.33333333333348" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductTypeService" target="site.wendev.qikebao.entities.ProductType">
+      <point x="63.5" y="-18.5" />
+      <point x="2619.1265873015864" y="224.0" />
+      <point x="2547.742787815453" y="224.0" />
+      <point x="-14.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.aop.ControllerExceptionAop" target="site.wendev.qikebao.common.Response">
+      <point x="0.0" y="-18.5" />
+      <point x="4451.376587301586" y="381.0" />
+      <point x="3672.141056213722" y="381.0" />
+      <point x="63.63636363636397" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.entities.Label" target="site.wendev.qikebao.entities.BaseEntity">
+      <point x="0.0" y="-18.5" />
+      <point x="6667.557311735125" y="107.0" />
+      <point x="6395.879881971297" y="107.0" />
+      <point x="14.727272727272975" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.LoginController" target="site.wendev.qikebao.entities.User">
+      <point x="0.0" y="-18.5" />
+      <point x="4731.126587301586" y="214.0" />
+      <point x="4894.935770739014" y="214.0" />
+      <point x="-37.600000000000364" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.PageResponse" target="site.wendev.qikebao.vo.BasePageVO">
+      <point x="0.0" y="-18.5" />
+      <point x="993.7976190476188" y="214.0" />
+      <point x="867.2068024850464" y="214.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.LabelServiceImpl" target="site.wendev.qikebao.mapper.LabelMapper">
+      <point x="57.75" y="-18.5" />
+      <point x="6815.265473230115" y="411.0" />
+      <point x="6806.265473230115" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ImportanceController" target="site.wendev.qikebao.service.ImportanceService">
+      <point x="92.0" y="-18.5" />
+      <point x="3883.035770739015" y="718.0" />
+      <point x="6107.076587301586" y="718.0" />
+      <point x="-60.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductController" target="site.wendev.qikebao.common.Response">
+      <point x="69.14285714285734" y="-18.5" />
+      <point x="2091.4666637063056" y="678.0" />
+      <point x="3042.8765873015864" y="678.0" />
+      <point x="3042.8765873015864" y="361.0" />
+      <point x="3557.595601668267" y="361.0" />
+      <point x="-50.90909090909099" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductService" target="site.wendev.qikebao.vo.ListProductVO">
+      <point x="-41.59999999999991" y="-18.5" />
+      <point x="1422.076587301587" y="391.0" />
+      <point x="1301.3432539682535" y="391.0" />
+      <point x="65.66666666666652" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.ProductTypeMapper" target="site.wendev.qikebao.entities.ProductType">
+      <point x="0.0" y="-18.5" />
+      <point x="2900.3765873015864" y="194.0" />
+      <point x="2634.742787815453" y="194.0" />
+      <point x="72.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.WorksheetServiceImpl" target="site.wendev.qikebao.vo.PageResponse">
+      <point x="122.66666666666652" y="-18.5" />
+      <point x="603.4071398967817" y="618.0" />
+      <point x="998.2142857142853" y="618.0" />
+      <point x="998.2142857142853" y="411.0" />
+      <point x="978.3809523809523" y="411.0" />
+      <point x="-15.416666666666515" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.UserServiceImpl" target="site.wendev.qikebao.entities.User">
+      <point x="-43.80000000000018" y="-18.5" />
+      <point x="4959.352609244024" y="411.0" />
+      <point x="4930.576587301586" y="411.0" />
+      <point x="4930.576587301586" y="224.0" />
+      <point x="4932.535770739014" y="224.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.FileUploadController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="-92.0" y="-18.5" />
+      <point x="3995.035770739015" y="688.0" />
+      <point x="3407.483687405681" y="688.0" />
+      <point x="57.8125" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.ProductService" target="site.wendev.qikebao.entities.Product">
+      <point x="41.59999999999991" y="-18.5" />
+      <point x="1505.276587301587" y="311.0" />
+      <point x="1629.926587301587" y="311.0" />
+      <point x="1629.926587301587" y="204.0" />
+      <point x="1751.602437405681" y="204.0" />
+      <point x="-53.333333333333485" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.WorksheetController" target="site.wendev.qikebao.utils.ResponseUtil">
+      <point x="113.57142857142844" y="-18.5" />
+      <point x="1016.6452351348771" y="698.0" />
+      <point x="3268.733687405681" y="698.0" />
+      <point x="-80.9375" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.CityServiceImpl" target="site.wendev.qikebao.entities.City">
+      <point x="-54.75" y="-18.5" />
+      <point x="8302.610770739015" y="411.0" />
+      <point x="8309.076587301586" y="411.0" />
+      <point x="8309.076587301586" y="214.0" />
+      <point x="8447.576587301586" y="214.0" />
+      <point x="-31.33333333333303" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.CustomerService" target="site.wendev.qikebao.entities.Customer">
+      <point x="0.0" y="-18.5" />
+      <point x="5688.076587301586" y="411.0" />
+      <point x="5818.723806563448" y="411.0" />
+      <point x="-46.66666666666697" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.vo.ListProductVO" target="site.wendev.qikebao.vo.BasePageVO">
+      <point x="0.0" y="-18.5" />
+      <point x="1235.676587301587" y="204.0" />
+      <point x="899.6068024850465" y="204.0" />
+      <point x="32.40000000000009" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.controller.ProductTypeController" target="site.wendev.qikebao.service.ProductService">
+      <point x="-126.0" y="-18.5" />
+      <point x="2332.8904732301153" y="528.0" />
+      <point x="1533.0099206349205" y="528.0" />
+      <point x="69.33333333333348" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.WorksheetService" target="site.wendev.qikebao.vo.PageResponse">
+      <point x="92.40000000000009" y="-18.5" />
+      <point x="538.7976190476188" y="401.0" />
+      <point x="916.7142857142853" y="401.0" />
+      <point x="-77.08333333333326" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.CityServiceImpl" target="site.wendev.qikebao.mapper.CityMapper">
+      <point x="54.75" y="-18.5" />
+      <point x="8412.110770739015" y="411.0" />
+      <point x="8400.576587301586" y="411.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.mapper.ProductMapper" target="site.wendev.qikebao.entities.Product">
+      <point x="0.0" y="-18.5" />
+      <point x="1687.176587301587" y="214.0" />
+      <point x="1772.9357707390145" y="214.0" />
+      <point x="-32.0" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.TemplateService" target="site.wendev.qikebao.entities.Template">
+      <point x="0.0" y="-18.5" />
+      <point x="7839.015473230115" y="411.0" />
+      <point x="8107.576587301585" y="411.0" />
+      <point x="-46.66666666666697" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductTypeServiceImpl" target="site.wendev.qikebao.service.ProductTypeService">
+      <point x="-59.80000000000018" y="-18.5" />
+      <point x="2712.590473230115" y="488.0" />
+      <point x="2619.1265873015864" y="488.0" />
+      <point x="63.5" y="18.5" />
+    </edge>
+    <edge source="site.wendev.qikebao.service.impl.ProductServiceImpl" target="site.wendev.qikebao.vo.AddProductVO">
+      <point x="112.88888888888869" y="-18.5" />
+      <point x="1594.0460287856704" y="668.0" />
+      <point x="1924.50992063492" y="668.0" />
+      <point x="1924.50992063492" y="321.0" />
+      <point x="1899.176587301587" y="321.0" />
+      <point x="0.0" y="18.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.4073538764543478" x="1729.772210931164" y="403.87468050574967" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

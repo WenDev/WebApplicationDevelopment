@@ -10,8 +10,10 @@ import lombok.experimental.Accessors;
  *
  * @author 江文
  * @since 2020/11/9 7:45 下午
+ * @deprecated 取消了客户系统的开发，本类不再使用
  */
 @Data
+@Deprecated
 @Accessors(chain = true)
 @TableName("label")
 @EqualsAndHashCode(callSuper = true)

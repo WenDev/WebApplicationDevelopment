@@ -11,6 +11,7 @@ import site.wendev.qikebao.service.CustomerService;
  *
  * @author 江文
  * @since 2020/11/11 10:17 上午
+ * @deprecated 取消了客户系统的开发，本类不再使用
  */
 @Service
 public class CustomerServiceImpl extends ServiceImpl<CustomerMapper, Customer> implements CustomerService {
